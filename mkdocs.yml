@@ -1,0 +1,283 @@
+# Project information, 网站信息
+site_name: smileatlRepo
+site_url: https://smileatl.github.io/smileatlRepo
+site_author: smileatl
+site_description: smileatl 个人知识库，Welcome！在广袤的空间和无限的时间中，能与你共享同一颗行星与同一段时光是我的荣幸。
+
+# Repository, 仓库信息
+repo_name: smileatl/smileatlRepo
+repo_url: https://github.com/smileatl/smileatlRepo
+
+# Copyright
+copyright: Copyright &copy; 2023 - 2024 smileatl
+
+theme:
+  # 所使用的主题名称
+  name: material
+  language: zh
+  # 个性化目录，用于覆盖material主题的默认样式
+  custom_dir: overrides
+  features:
+    # 编辑页面
+    - content.action.edit
+    # 查看页面源码
+    - content.action.view
+    # 为代码块添加复制按钮
+    - content.code.copy
+    # 设置开启导航
+    - navigation.tabs
+    # 返回顶部按钮
+    - navigation.top
+    # 页脚上一个和下一个按钮
+    - navigation.footer
+    # 搜索建议
+    - search.suggest
+    # 搜索高亮显示
+    - search.highlight
+    # 搜索共享
+    - search.share
+  # 导航栏与侧边栏图标
+  logo: assets/website_icon.png
+  # 网站上看到的大多数图标（如导航图标）也可以更改
+  # icon:
+  #   logo: logo
+  # 网站图标
+  favicon: assets/favicon.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to system preference
+
+# 插件
+plugins:
+  - search:
+      # separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+      lang: 
+        - zh
+        - en
+extra:
+  # 去除页面左下角的made with mkdocs for material的主题信息
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/smileatl
+      name: GitHub
+    - icon: fontawesome/regular/envelope #联系方式图标
+      link: mailto:<1355484300@qq.com> #邮件联系方式
+      name: TEmail 
+    - icon: fontawesome/brands/bilibili
+      link: https://space.bilibili.com/343556699?spm_id_from=333.999.0.0
+      name: Bilibili
+    # 在默认material主题里，可以去mkdocs-material的material/文件夹里随便翻翻
+    - icon: simple/douban
+      link: https://www.douban.com/people/172023060/
+      name: Douban
+
+extra_css:
+  - css/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  # - pymdownx.emoji:
+  #     emoji_index: !!python/name:materialx.emoji.twemoji
+  #     emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.keys
+  # - pymdownx.magiclink:
+  #     repo_url_shorthand: true
+  #     user: squidfunk
+  #     repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+
+nav:
+  - Home: index.md
+  - Get started:
+    - 网站指引: start_learning.md
+    - 关于网站: about.md
+  - 项目:
+    - smileatlRepo:
+      - 初识smileatlRepo: MyProject/smileatlRepo/10.初识smileatlRepo.md
+    - Interview:
+      - cpp: MyProject/smileatl_interview/10.cpp
+      - cpp关键字: MyProject/smileatl_interview/15.cpp关键字.md
+      - cpp_stl: MyProject/smileatl_interview/20.cpp_stl.md
+      - cpp新特性: MyProject/smileatl_interview/30.cpp新特性.md
+      - cpp其他: MyProject/smileatl_interview/40.cpp其他.md
+      - gcc_g++_gdb: MyProject/smileatl_interview/45.gcc_g++_gdb.md
+      - Linux: MyProject/smileatl_interview/50.Linux.md
+      - 操作系统: MyProject/smileatl_interview/60.操作系统.md
+      - 操作系统-网络系统: MyProject/smileatl_interview/70.操作系统-网络系统.md
+      - 操作系统-内存管理: MyProject/smileatl_interview/80.操作系统-内存管理.md
+      - 操作系统-多线程_多进程_线程池: MyProject/smileatl_interview/85.操作系统-多线程_多进程_线程池.md
+      - 计算机网络: MyProject/smileatl_interview/90.计算机网络.md
+      - 数据结构与算法: MyProject/smileatl_interview/100.数据结构与算法.md
+      - MySQL: MyProject/smileatl_interview/110.MySQL.md
+      - Redis: MyProject/smileatl_interview/115.Redis.md
+      - 设计模式: MyProject/smileatl_interview/130.设计模式.md
+      - 系统设计: MyProject/smileatl_interview/140.系统设计.md
+      - 工具: MyProject/smileatl_interview/150.工具.md
+      - 技术支持: MyProject/smileatl_interview/190.技术支持.md
+      - HR面相关问题: MyProject/smileatl_interview/200.HR面相关问题.md
+  - 工作:
+    - 编程语言:
+      - C:
+        - myC:
+          - myC: C/myC/10.myC.md
+          - gcc: C/myC/20.gcc.md
+          - 安装: C/myC/50.安装.md
+        - Book:
+          - C语言深度解剖: C/Book/C语言深度解剖.md
+        - Lesson:
+          - 翁恺C语言: C/Lesson/翁恺C语言/C_wengkai.md
+      - Cpp:
+        - myCpp: 
+          - myCpp: Cpp/myCpp/10.myCpp.md
+          - STL: Cpp/myCpp/20.STL.md
+        - Lesson: 
+          - Cpp基础入门: Cpp/myCpp/02.Cpp基础入门.md
+          - Cpp核心编程: Cpp/myCpp/03.Cpp核心编程.md
+          - Cpp提高编程: Cpp/myCpp/04.Cpp提高编程.md
+      - Go:
+        - myGo:
+          - 初识Go语言: Go/1.初识Go语言.md
+      - Python:
+        - myPython:
+          - Python基础: Python/myPython/Python基础.md 
+      - Script_Language:
+        - shell脚本: Script_Language/10.shell脚本.md
+        - slurm和sbatch: Script_Language/20.slurm和sbatch.md
+      - YML:
+        - YML: YML/yml.md
+    - 计算机知识:
+      - Linux:
+        - linux系统基础: 计算机知识/Linux/linux系统基础.md
+      - 操作系统:
+          - Linux基础编程: 计算机知识/操作系统/基础编程/Linux系统函数.md
+          - Linux网络编程: 计算机知识/操作系统/网络编程/Linux网络编程.md
+          - 进程: 计算机知识/操作系统/系统编程/进程.md
+          - 线程: 计算机知识/操作系统/系统编程/线程.md
+          - 信号: 计算机知识/操作系统/系统编程/信号.md
+      - 计算机网络:
+        - ICT技术:
+          - 通信基础: 计算机知识/计算机网络/ICT技术/通信基础.md
+          - 交换机基础: 计算机知识/计算机网络/ICT技术/交换机基础.md
+          - 路由协议: 计算机知识/计算机网络/ICT技术/路由协议.md
+          - NAT: 计算机知识/计算机网络/ICT技术/NAT.md
+          - ACL: 计算机知识/计算机网络/ICT技术/ACL.md
+          - IPV6: 计算机知识/计算机网络/ICT技术/IPV6.md
+        - NetworkProgramming:
+          - http: 计算机知识/计算机网络/NetworkProgramming/协议/http.md
+          - http补充问题: 计算机知识/计算机网络/NetworkProgramming/协议/http补充问题.md
+          - websocket: 计算机知识/计算机网络/NetworkProgramming/协议/websocket.md
+          - 网络编程常见概念: 计算机知识/计算机网络/NetworkProgramming/网络编程常见概念.md
+      - 数据结构与算法:
+        - 数据结构与算法基础: 计算机知识/数据结构与算法/数据结构与算法基础.md
+        - 青大王卓:
+          - 线性表: 计算机知识/数据结构与算法/青大王卓/10.线性表.md
+          - 栈和队列: 计算机知识/数据结构与算法/青大王卓/20.栈和队列.md
+          - 二叉树: 计算机知识/数据结构与算法/青大王卓/30.二叉树.md
+          - 图: 计算机知识/数据结构与算法/青大王卓/40.图.md
+          - 查找算法: 计算机知识/数据结构与算法/青大王卓/50.查找算法.md
+          - 排序算法: 计算机知识/数据结构与算法/青大王卓/60.排序算法.md
+    - 工具:
+      - Git:
+        - Git使用: Tools/Git/01.Git使用.md
+        - Git补充问题: Tools/Git/05.Git补充问题.md
+        - tortoiseGt: Tools/Git/10.tortoiseGit.md
+      - Markdown:
+        - markdown: Tools/Markdown/markdown.md
+        - markdown常见问题: Tools/Markdown/markdown常见问题.md
+      - Obsidian:
+        - obsidian: Tools/Obsidian/obsidian.md
+      - SSH:
+        - SSH: Tools/SSH/SSH.md
+      - Vim:
+        - Vim: Tools/Vim/vim.md
+        - vim_黑马: Tools/Vim/vim_黑马系统基础编程.md
+      - VisioStudio:
+        - VisioStudio: Tools/VisioStudio/VisioStudio.md
+      - VMware:
+        - VMware: Tools/VMware/VMware.md
+      - Vscode:
+        - Vscode: Tools/Vscode/Vscode.md
+    - 其他:
+      - 刷题: 
+        - 数组: 刷题/02.Leetcode-数组.md
+        - 字符串: 刷题/04.Leetcode-字符串.md
+        - 链表: 刷题/06.Leetcode-链表.md
+        - 哈希表: 刷题/08.Leetcode-哈希表.md
+        - 栈与队列: 刷题/10.Leetcode-栈与队列.md
+        - 树: 刷题/12.Leetcode-树.md
+        - 贪心算法: 刷题/14.Leetcode-贪心算法.md
+        - 递归: 刷题/15.Leetcode-递归.md
+        - 回溯算法: 刷题/16.Leetcode-回溯算法.md
+        - 分治法: 刷题/18.Leetcode-分治法.md
+        - 搜索: 刷题/20.Leetcode-搜索.md
+        - 动态规划: 刷题/22.Leetcode-动态规划.md
+        - 二分查找:  刷题/24.Leetcode-二分查找.md
+        - 排序算法: 刷题/26.Leetcode-排序算法.md
+        - 双指针: 刷题/28.Leetcode-双指针.md
+        - 数学: 刷题/30.Leetcode-数学.md
+        - 其他算法: 刷题/32.Leetcode-其他算法.md
+        - 剑指offer: 刷题/50.Leetcode-剑指offer.md
+        - ACM模式输入输出: 刷题/60.Leetcode-ACM模式输入输出.md
+        - 排序算法详解: 刷题/70.Leetcode-排序算法详解.md
+        - 面试高频题-自己输入输出: 刷题/80.Leetcode-面试高频题-自己输入输出.md
+        - 复刷还是没记住的题: 刷题/150.Leetcode-复刷还是没记住的题.md
+  - 学习: 
+    - Postgraduate:
+      - publications: 学习/Postgraduate/00.publications.md
+      - 机器学习知识点: 学习/Postgraduate/机器学习/机器学习知识点.md
+      - Python深度学习: 学习/Postgraduate/机器学习/Python深度学习/Python深度学习.md
+    - 阅读:
+      - 个人摘抄: 学习/阅读与日记/个人摘抄.md
+  - 收藏:
+    - 个人收藏夹: 收藏/05.个人收藏夹.md
+    - 资源下载: 收藏/10.资源下载.md
+  - Blog:
+    - 生活随笔:
+      - 初识生活: 随笔/生活随笔/初识生活.md
+    - 科技随笔:
+      - 初识科技: 随笔/科技随笔/初识科技.md
+  - 留言: message.md
