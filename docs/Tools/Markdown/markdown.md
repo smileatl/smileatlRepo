@@ -5,7 +5,7 @@
 （1）markdown标准语法
 
 ```
-[]( https://github.com/smileatl)
+[](https://github.com/smileatl)
 ```
 
 （2）类html链接
@@ -16,7 +16,7 @@
 < https://github.com/smileatl>
 ```
 
-（3）直接放网站链接
+（3）直接放网站链接（不建议）
 
 某些 Markdown 渲染器可能不会自动将裸露的网址转换为超链接
 
