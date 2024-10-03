@@ -8,7 +8,7 @@ comments: true
 
 感谢你的一路支持！
 
-- 邮箱： **1355484300@qq.com**
+- 邮箱： **songlei.lin@qq.com**
 
 55555555
 

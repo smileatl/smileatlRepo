@@ -203,7 +203,7 @@ GitHub Copilot 和 GitHub Copilot Chat 是两种不同的使用模式，但都�
 ```cpp
 /**
  * @file log.h
- * @author smileatl (1355484300@qq.com)
+ * @author smileatl (songlei.lin@qq.com)
  * @brief 
  * @version 0.1
  * @date 2023-12-23

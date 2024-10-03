@@ -74,7 +74,7 @@ extra:
       link: https://github.com/smileatl
       name: GitHub
     - icon: fontawesome/regular/envelope #联系方式图标
-      link: mailto:<1355484300@qq.com> #邮件联系方式
+      link: mailto:<songlei.lin@qq.com> #邮件联系方式
       name: TEmail 
     - icon: fontawesome/brands/bilibili
       link: https://space.bilibili.com/343556699?spm_id_from=333.999.0.0
