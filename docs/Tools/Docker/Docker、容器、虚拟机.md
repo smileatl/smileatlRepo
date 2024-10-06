@@ -62,3 +62,74 @@ Docker收到命令后，将本地镜像上传到镜像仓库。
 
 ## 使用示例
 
+下面使用Docker将基于Nginx镜像打包一个容器镜像，并基于容器镜像运行应用，然后推送到容器镜像仓库。
+
+### 安装docker
+
+Docker几乎支持在所有操作系统上安装，用户可以根据需要选择要安装的Docker版本。
+
+在Linux操作系统下，可以使用如下命令快速安装Docker。
+
+```text
+curl -fsSL get.docker.com -o get-docker.sh
+sh get-docker.sh
+```
+
+### Docker打包镜像
+
+Docker提供了一种便捷的描述应用打包的方式，叫做Dockerfile，如下所示：
+
+```dockfile
+# 使用官方提供的Nginx镜像作为基础镜像
+FROM nginx:alpine
+
+# 执行一条命令修改Nginx镜像index.html的内容
+RUN echo "hello world" > /usr/share/nginx/html/index.html
+
+# 允许外界访问容器的80端口
+EXPOSE 80
+```
+
+执行docker build命令打包镜像。
+
+```shell
+docker build -t hello .
+```
+
+其中-t表示给镜像加一个标签，也就是给镜像取名，这里镜像名为hello。. 表示在当前目录下执行该打包命令。
+
+执行`docker images`命令查看镜像，可以看到hello镜像已经创建成功。您还可以看到一个Nginx镜像，这个镜像是从镜像仓库下载下来的，作为hello镜像的基础镜像使用。
+
+```shell
+# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+hello               latest              d120ec16dcea        17 minutes ago      158MB
+nginx               alpine              eeb27ee6b893        2 months ago        148MB
+```
+
+### 本地运行容器镜像
+
+有了镜像后，您可以在本地执行docker run命令运行容器镜像。
+
+```shell
+docker run -p 8080:80 hello
+```
+
+docker run命令会启动一个容器，命令中-p是将本地机器的8080端口映射到容器的80端口，即本地机器的8080端口的流量会映射到容器的80端口，当您在本地机器访问 [http://127.0.0.1:8080](https://link.zhihu.com/?target=http%3A//127.0.0.1%3A8080)时，就会访问到容器中，此时浏览器中返回的内容应该就是“hello world”。
+
+### 把镜像推送到镜像仓库
+
+上传镜像前需要给镜像取一个完整的名称，如下所示：
+
+（[http://swr.cn-east-3.myhuaweicloud.com](https://link.zhihu.com/?target=http%3A//swr.cn-east-3.myhuaweicloud.com)是仓库地址，container是组织名，v1则是hello镜像分配的版本号。这是针对华为云的，只是举个示例）
+
+```sehll
+docker tag hello swr.cn-east-3.myhuaweicloud.com/container/hello:v1
+```
+
+然后执行docker push命令就可以将镜像上传
+
+```shell
+docker push swr.cn-east-3.myhuaweicloud.com/container/hello:v1
+```
+
