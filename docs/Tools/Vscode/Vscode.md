@@ -8,8 +8,6 @@
 
 在设置里搜索Render Whitespace
 
-
-
 ## 8、格式化
 
 windows下：ctrl+shift+F	格式化代码
