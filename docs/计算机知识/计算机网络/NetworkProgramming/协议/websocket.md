@@ -45,9 +45,12 @@ Websocket 使用 ws 或 wss 的统一资源标志符（URI），其中 wss 表�
 
 **如：**
 
-> ws://echo.websocket.org wss://echo.websocket.org
+```
+ws://echo.websocket.org
+wss://echo.websocket.org
+```
 
-WebSocket 与 HTTP 和 HTTPS 使用相同的 TCP 端口，可以绕过大多数防火墙的限制。
+**WebSocket 与 HTTP 和 HTTPS 使用相同的 TCP 端口，可以绕过大多数防火墙的限制**。
 
 **默认情况下：**
 
@@ -56,9 +59,9 @@ WebSocket 与 HTTP 和 HTTPS 使用相同的 TCP 端口，可以绕过大多数�
 
 #### 3.2 WebSocket 简介
 
-WebSocket 是一种网络传输协议，可在单个 TCP 连接上进行全双工通信，位于 OSI 模型的应用层。WebSocket 协议在 2011 年由 IETF 标准化为 [RFC 6455](https://cloud.tencent.com/developer/tools/blog-entry?target=https%3A%2F%2Ftools.ietf.org%2Fhtml%2Frfc6455&source=article&objectId=1887095)，后由 [RFC 7936](https://cloud.tencent.com/developer/tools/blog-entry?target=https%3A%2F%2Ftools.ietf.org%2Fhtml%2Frfc7936&source=article&objectId=1887095) 补充规范。
+WebSocket 是一种网络传输协议，可在单个 TCP 连接上进行全双工通信，位于 OSI 模型的**应用层**。WebSocket 协议在 2011 年由 IETF 标准化为 [RFC 6455](https://cloud.tencent.com/developer/tools/blog-entry?target=https%3A%2F%2Ftools.ietf.org%2Fhtml%2Frfc6455&source=article&objectId=1887095)，后由 [RFC 7936](https://cloud.tencent.com/developer/tools/blog-entry?target=https%3A%2F%2Ftools.ietf.org%2Fhtml%2Frfc7936&source=article&objectId=1887095) 补充规范。
 
-WebSocket 使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在 WebSocket API 中，浏览器和服务器只需要完成一次握手，两者之间就可以创建持久性的连接，并进行双向数据传输。
+WebSocket 使得客户端和服务器之间的数据交换变得更加简单，**允许服务端主动向客户端推送数据**。**在 WebSocket API 中，浏览器和服务器只需要完成一次握手，两者之间就可以创建持久性的连接，并进行双向数据传输**。
 
 介绍完轮询和 WebSocket 的相关内容之后，接下来用一张图看一下 XHR Polling（短轮询） 与 WebSocket 之间的区别。
 
@@ -117,7 +120,9 @@ WebSocket 使得客户端和服务器之间的数据交换变得更加简单，�
 
 **WebSocket 构造函数的语法为：**
 
-> const myWebSocket = newWebSocket(url \[, protocols\]);
+```
+const myWebSocket = newWebSocket(url [, protocols]);
+```
 
 **相关参数说明如下：**
 
@@ -185,11 +190,29 @@ WebSocket 使得客户端和服务器之间的数据交换变得更加简单，�
 
 **在以上示例中：**我们在页面上创建了两个 textarea，分别用于存放 待发送的数据 和 服务器返回的数据。当用户输入完待发送的文本之后，点击 发送 按钮时会把输入的文本发送到服务端，而服务端成功接收到消息之后，会把收到的消息原封不动地回传到客户端。
 
-> // const socket = new WebSocket("ws://echo.websocket.org"); // const sendMsgContainer = document.querySelector("#sendMessage"); function send() {   const message = sendMsgContainer.value;   if(socket.readyState !== WebSocket.OPEN) {     console.log("连接未建立，还不能发送消息");     return;   }   if(message) socket.send(message); }
+```
+// const socket = new WebSocket("ws://echo.websocket.org");
+// const sendMsgContainer = document.querySelector("#sendMessage");
+function send() {
+  const message = sendMsgContainer.value;
+  if(socket.readyState !== WebSocket.OPEN) {
+    console.log("连接未建立，还不能发送消息");
+    return;
+  }
+  if(message) socket.send(message);
+}
+```
 
 当然客户端接收到服务端返回的消息之后，会把对应的文本内容保存到 接收的数据 对应的 textarea 文本框中。
 
-> // const socket = new WebSocket("ws://echo.websocket.org"); // const receivedMsgContainer = document.querySelector("#receivedMessage");    socket.addEventListener("message", function(event) {   console.log("Message from server ", event.data);   receivedMsgContainer.value = event.data; });
+```
+// const socket = new WebSocket("ws://echo.websocket.org");
+// const receivedMsgContainer = document.querySelector("#receivedMessage");   
+socket.addEventListener("message", function(event) {
+  console.log("Message from server ", event.data);
+  receivedMsgContainer.value = event.data;
+});
+```
 
 为了更加直观地理解上述的数据交互过程，我们使用 Chrome 浏览器的开发者工具来看一下相应的过程。
 
@@ -201,13 +224,77 @@ WebSocket 使得客户端和服务器之间的数据交换变得更加简单，�
 
 **以上示例对应的完整代码如下所示：**
 
-> <!DOCTYPE html> <html>   <head>     <metacharset="UTF-8"/>     <metaname="viewport"content="width=device-width, initial-scale=1.0"/>     <title>WebSocket 发送普通文本示例</title>     <style>       .block {         flex: 1;       }     </style>   </head>   <body>     <h3>WebSocket 发送普通文本示例</h3>     <divstyle="display: flex;">       <divclass="block">         <p>即将发送的数据：<button>发送</button></p>         <textareaid="sendMessage"rows="5"cols="15"></textarea>       </div>       <divclass="block">         <p>接收的数据：</p>         <textareaid="receivedMessage"rows="5"cols="15"></textarea>       </div>     </div>     <script>       const sendMsgContainer = document.querySelector("#sendMessage");       const receivedMsgContainer = document.querySelector("#receivedMessage");       const socket = new WebSocket("ws://echo.websocket.org");       // 监听连接成功事件       socket.addEventListener("open", function (event) {         console.log("连接成功，可以开始通讯");       });       // 监听消息       socket.addEventListener("message", function (event) {         console.log("Message from server ", event.data);         receivedMsgContainer.value = event.data;       });       function send() {         const message = sendMsgContainer.value;         if (socket.readyState !== WebSocket.OPEN) {           console.log("连接未建立，还不能发送消息");           return;         }         if (message) socket.send(message);       }     </script>   </body> </html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <metacharset="UTF-8"/>
+    <metaname="viewport"content="width=device-width, initial-scale=1.0"/>
+    <title>WebSocket 发送普通文本示例</title>
+    <style>
+      .block {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>WebSocket 发送普通文本示例</h3>
+    <divstyle="display: flex;">
+      <divclass="block">
+        <p>即将发送的数据：<button>发送</button></p>
+        <textareaid="sendMessage"rows="5"cols="15"></textarea>
+      </div>
+      <divclass="block">
+        <p>接收的数据：</p>
+        <textareaid="receivedMessage"rows="5"cols="15"></textarea>
+      </div>
+    </div>
+    <script>
+      const sendMsgContainer = document.querySelector("#sendMessage");
+      const receivedMsgContainer = document.querySelector("#receivedMessage");
+      const socket = new WebSocket("ws://echo.websocket.org");
+      // 监听连接成功事件
+      socket.addEventListener("open", function (event) {
+        console.log("连接成功，可以开始通讯");
+      });
+      // 监听消息
+      socket.addEventListener("message", function (event) {
+        console.log("Message from server ", event.data);
+        receivedMsgContainer.value = event.data;
+      });
+      function send() {
+        const message = sendMsgContainer.value;
+        if (socket.readyState !== WebSocket.OPEN) {
+          console.log("连接未建立，还不能发送消息");
+          return;
+        }
+        if (message) socket.send(message);
+      }
+    </script>
+  </body>
+</html>
 
 其实 WebSocket 除了支持发送普通的文本之外，它还支持发送二进制数据，比如 ArrayBuffer 对象、Blob 对象或者 ArrayBufferView 对象。
 
 **代码示例如下：**
 
-> const socket = new WebSocket("ws://echo.websocket.org"); socket.onopen = function() {   // 发送UTF-8编码的文本信息   socket.send("Hello Echo Server!");   // 发送UTF-8编码的JSON数据   socket.send(JSON.stringify({ msg: "我是阿宝哥"}));   // 发送二进制ArrayBuffer   const buffer = newArrayBuffer(128);   socket.send(buffer);   // 发送二进制ArrayBufferView   const intview = new Uint32Array(buffer);   socket.send(intview);   // 发送二进制Blob   const blob = new Blob(\[buffer\]);   socket.send(blob); };
+```
+const socket = new WebSocket("ws://echo.websocket.org");
+socket.onopen = function() {
+  // 发送UTF-8编码的文本信息
+  socket.send("Hello Echo Server!");
+  // 发送UTF-8编码的JSON数据
+  socket.send(JSON.stringify({ msg: "我是阿宝哥"}));
+  // 发送二进制ArrayBuffer
+  const buffer = newArrayBuffer(128);
+  socket.send(buffer);
+  // 发送二进制ArrayBufferView
+  const intview = new Uint32Array(buffer);
+  socket.send(intview);
+  // 发送二进制Blob
+  const blob = new Blob([buffer]);
+  socket.send(blob);
+};
+```
 
 以上代码成功运行后，通过 Chrome 开发者工具，我们可以看到对应的数据交互过程。
 
@@ -237,13 +324,38 @@ Blob（Binary Large Object）表示二进制类型的大对象。在数据库管
 
 **数据发送代码：**
 
-> // const socket = new WebSocket("ws://echo.websocket.org"); // const sendMsgContainer = document.querySelector("#sendMessage"); function send() {   const message = sendMsgContainer.value;   if(socket.readyState !== WebSocket.OPEN) {     console.log("连接未建立，还不能发送消息");     return;   }   const blob = newBlob(\[message\], { type: "text/plain"});   if(message) socket.send(blob);   console.log(\`未发送至服务器的字节数：${socket.bufferedAmount}\`); }
+```
+// const socket = new WebSocket("ws://echo.websocket.org");
+// const sendMsgContainer = document.querySelector("#sendMessage");
+function send() {
+  const message = sendMsgContainer.value;
+  if(socket.readyState !== WebSocket.OPEN) {
+    console.log("连接未建立，还不能发送消息");
+    return;
+  }
+  const blob = newBlob([message], { type: "text/plain"});
+  if(message) socket.send(blob);
+  console.log(`未发送至服务器的字节数：${socket.bufferedAmount}`);
+}
+```
 
 当客户端接收到服务端返回的消息之后，会判断返回的数据类型，如果是 Blob 类型的话，会调用 Blob 对象的 text() 方法，获取 Blob 对象中保存的 UTF-8 格式的内容，然后把对应的文本内容保存到 接收的数据 对应的 textarea 文本框中。
 
 **数据接收代码：**
 
-> // const socket = new WebSocket("ws://echo.websocket.org"); // const receivedMsgContainer = document.querySelector("#receivedMessage"); socket.addEventListener("message", async function(event) {   console.log("Message from server ", event.data);   const receivedData = event.data;   if(receivedData instanceofBlob) {     receivedMsgContainer.value = await receivedData.text();   } else{     receivedMsgContainer.value = receivedData;   }  });
+```
+// const socket = new WebSocket("ws://echo.websocket.org");
+// const receivedMsgContainer = document.querySelector("#receivedMessage");
+socket.addEventListener("message", async function(event) {
+  console.log("Message from server ", event.data);
+  const receivedData = event.data;
+  if(receivedData instanceofBlob) {
+    receivedMsgContainer.value = await receivedData.text();
+  } else{
+    receivedMsgContainer.value = receivedData;
+  }
+ });
+```
 
 同样，我们使用 Chrome 浏览器的开发者工具来看一下相应的过程：
 
@@ -255,7 +367,7 @@ Blob（Binary Large Object）表示二进制类型的大对象。在数据库管
 
 **以上示例对应的完整代码如下所示：**
 
-> <!DOCTYPE html> <html>   <head>     <meta charset="UTF-8"/>     <meta name="viewport"content="width=device-width, initial-scale=1.0"/>     <title>WebSocket 发送二进制数据示例</title>     <style>       .block {         flex: 1;       }     </style>   </head>   <body>     <h3>WebSocket 发送二进制数据示例</h3>     <div style="display: flex;">       <div class="block">         <p>待发送的数据：<button>发送</button></p>         <textarea id="sendMessage"rows="5"cols="15"></textarea>       </div>       <div class="block">         <p>接收的数据：</p>         <textarea id="receivedMessage"rows="5"cols="15"></textarea>       </div>     </div>     <script>       const sendMsgContainer = document.querySelector("#sendMessage");       const receivedMsgContainer = document.querySelector("#receivedMessage");       const socket = new WebSocket("ws://echo.websocket.org");       // 监听连接成功事件       socket.addEventListener("open", function(event) {         console.log("连接成功，可以开始通讯");       });       // 监听消息       socket.addEventListener("message", async function(event) {         console.log("Message from server ", event.data);         const receivedData = event.data;         if(receivedData instanceofBlob) {           receivedMsgContainer.value = await receivedData.text();         } else{           receivedMsgContainer.value = receivedData;         }       });       functionsend() {         const message = sendMsgContainer.value;         if(socket.readyState !== WebSocket.OPEN) {           console.log("连接未建立，还不能发送消息");           return;         }         const blob = newBlob(\[message\], { type: "text/plain"});         if(message) socket.send(blob);         console.log(\`未发送至服务器的字节数：${socket.bufferedAmount}\`);       }     </script>   </body> </html>
+<!DOCTYPE html> <html>   <head>     <meta charset="UTF-8"/>     <meta name="viewport"content="width=device-width, initial-scale=1.0"/>     <title>WebSocket 发送二进制数据示例</title>     <style>       .block {         flex: 1;       }     </style>   </head>   <body>     <h3>WebSocket 发送二进制数据示例</h3>     <div style="display: flex;">       <div class="block">         <p>待发送的数据：<button>发送</button></p>         <textarea id="sendMessage"rows="5"cols="15"></textarea>       </div>       <div class="block">         <p>接收的数据：</p>         <textarea id="receivedMessage"rows="5"cols="15"></textarea>       </div>     </div>      <script>       const sendMsgContainer = document.querySelector("#sendMessage");       const receivedMsgContainer = document.querySelector("#receivedMessage");       const socket = new WebSocket("ws://echo.websocket.org");        // 监听连接成功事件       socket.addEventListener("open", function(event) {         console.log("连接成功，可以开始通讯");       });        // 监听消息       socket.addEventListener("message", async function(event) {         console.log("Message from server ", event.data);         const receivedData = event.data;         if(receivedData instanceofBlob) {           receivedMsgContainer.value = await receivedData.text();         } else{           receivedMsgContainer.value = receivedData;         }       });        functionsend() {         const message = sendMsgContainer.value;         if(socket.readyState !== WebSocket.OPEN) {           console.log("连接未建立，还不能发送消息");           return;         }         const blob = newBlob([message], { type: "text/plain"});         if(message) socket.send(blob);         console.log(`未发送至服务器的字节数：${socket.bufferedAmount}`);       }     </script>   </body> </html>
 
 可能有一些小伙伴了解完 WebSocket API 之后，觉得还不够过瘾。下面将带大家来实现一个支持发送普通文本的 WebSocket 服务器。
 
@@ -298,7 +410,16 @@ WebSocket 协议属于应用层协议，它依赖于传输层的 TCP 协议。We
 
 ***5.2.1）客户端请求：***
 
-> GET ws://echo.websocket.org/ HTTP/1.1 Host: echo.websocket.org Origin: file:// Connection: Upgrade Upgrade: websocket Sec-WebSocket-Version: 13 Sec-WebSocket-Key: Zx8rNEkBE4xnwifpuh8DHQ== Sec-WebSocket-Extensions: permessage-deflate; client\_max\_window\_bits
+```
+GET ws://echo.websocket.org/ HTTP/1.1
+Host: echo.websocket.org
+Origin: file://
+Connection: Upgrade
+Upgrade: websocket
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Key: Zx8rNEkBE4xnwifpuh8DHQ==
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+```
 
 **备注：**已忽略部分 HTTP 请求头。
 
@@ -315,7 +436,12 @@ WebSocket 协议属于应用层协议，它依赖于传输层的 TCP 协议。We
 
 ***5.2.2）服务端响应：***
 
-> HTTP/1.1 101 Web Socket Protocol Handshake ① Connection: Upgrade ② Upgrade: websocket ③ Sec-WebSocket-Accept: 52Rg3vW4JQ1yWpkvFlsTsiezlqw= ④
+```
+HTTP/1.1 101 Web Socket Protocol Handshake ①
+Connection: Upgrade ②
+Upgrade: websocket ③
+Sec-WebSocket-Accept: 52Rg3vW4JQ1yWpkvFlsTsiezlqw= ④
+```
 
 **备注：**已忽略部分 HTTP 响应头。
 
@@ -334,7 +460,39 @@ WebSocket 协议属于应用层协议，它依赖于传输层的 TCP 协议。We
 
 **具体代码如下所示：**
 
-> const http = require("http"); const port = 8888; const { generateAcceptValue } = require("./util"); const server = http.createServer((req, res) => {   res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8"});   res.end("大家好，我是阿宝哥。感谢你阅读“你不知道的WebSocket”"); }); server.on("upgrade", function(req, socket) {   if(req.headers\["upgrade"\] !== "websocket") {     socket.end("HTTP/1.1 400 Bad Request");     return;   }   // 读取客户端提供的Sec-WebSocket-Key   const secWsKey = req.headers\["sec-websocket-key"\];   // 使用SHA-1算法生成Sec-WebSocket-Accept   const hash = generateAcceptValue(secWsKey);   // 设置HTTP响应头   const responseHeaders = \[     "HTTP/1.1 101 Web Socket Protocol Handshake",     "Upgrade: WebSocket",     "Connection: Upgrade",     \`Sec-WebSocket-Accept: ${hash}\`,   \];   // 返回握手请求的响应信息   socket.write(responseHeaders.join("\\r\\n") + "\\r\\n\\r\\n"); }); server.listen(port, () =>   console.log(\`Server running at http://localhost:${port}\`) );
+```
+const http = require("http");
+const port = 8888;
+const { generateAcceptValue } = require("./util");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8"});
+  res.end("大家好，我是阿宝哥。感谢你阅读“你不知道的WebSocket”");
+});
+
+server.on("upgrade", function(req, socket) {
+  if(req.headers["upgrade"] !== "websocket") {
+    socket.end("HTTP/1.1 400 Bad Request");
+    return;
+  }
+  // 读取客户端提供的Sec-WebSocket-Key
+  const secWsKey = req.headers["sec-websocket-key"];
+  // 使用SHA-1算法生成Sec-WebSocket-Accept
+  const hash = generateAcceptValue(secWsKey);
+  // 设置HTTP响应头
+  const responseHeaders = [
+    "HTTP/1.1 101 Web Socket Protocol Handshake",
+    "Upgrade: WebSocket",
+    "Connection: Upgrade",
+    `Sec-WebSocket-Accept: ${hash}`,
+  ];
+  // 返回握手请求的响应信息
+  socket.write(responseHeaders.join("\r\n") + "\r\n\r\n");
+});
+
+server.listen(port, () =>
+  console.log(`Server running at http://localhost:${port}`)
+);
+```
 
 **在以上代码中：**我们首先引入了 *http* 模块，然后通过调用该模块的 *createServer()* 方法创建一个 HTTP 服务器，接着我们监听 *upgrade* 事件，每次服务器响应升级请求时就会触发该事件。由于我们的服务器只支持升级到 WebSocket 协议，所以如果客户端请求升级的协议非 WebSocket 协议，我们将会返回 “400 Bad Request”。
 
@@ -344,7 +502,17 @@ WebSocket 协议属于应用层协议，它依赖于传输层的 TCP 协议。We
 
 **代码如下：**
 
-> // util.js const crypto = require("crypto"); const MAGIC\_KEY = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"; function generateAcceptValue(secWsKey) {   return crypto     .createHash("sha1")     .update(secWsKey + MAGIC\_KEY, "utf8")     .digest("base64"); }
+```
+// util.js
+const crypto = require("crypto");
+const MAGIC_KEY = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+function generateAcceptValue(secWsKey) {
+  return crypto
+    .createHash("sha1")
+    .update(secWsKey + MAGIC_KEY, "utf8")
+    .digest("base64");
+}
+```
 
 开发完握手功能之后，我们可以使用前面的示例来测试一下该功能。待服务器启动之后，我们只要对 “发送普通文本” 示例，做简单地调整，即把先前的 URL 地址替换成 ws://localhost:8888，就可以进行功能验证。
 
@@ -360,11 +528,22 @@ WebSocket 协议属于应用层协议，它依赖于传输层的 TCP 协议。We
 
 **此时，浏览器的控制台会输出以下异常信息：**
 
-> WebSocket connection to 'ws://localhost:8888/'failed: Error during WebSocket handshake: Incorrect 'Sec-WebSocket-Accept'header value
+```
+WebSocket connection to 'ws://localhost:8888/'failed: Error during WebSocket handshake: Incorrect 'Sec-WebSocket-Accept'header value
+```
 
 如果你的 WebSocket 服务器要支持子协议的话，你可以参考以下代码进行子协议的处理，这里就不继续展开介绍了。
 
-> // 从请求头中读取子协议 const protocol = req.headers\["sec-websocket-protocol"\]; // 如果包含子协议，则解析子协议 const protocols = !protocol ? \[\] : protocol.split(",").map((s) => s.trim()); // 简单起见，我们仅判断是否含有JSON子协议 if(protocols.includes("json")) {   responseHeaders.push(\`Sec-WebSocket-Protocol: json\`); }
+```
+// 从请求头中读取子协议
+const protocol = req.headers["sec-websocket-protocol"];
+// 如果包含子协议，则解析子协议
+const protocols = !protocol ? [] : protocol.split(",").map((s) => s.trim());
+
+// 简单起见，我们仅判断是否含有JSON子协议
+if(protocols.includes("json")) {
+  responseHead
+```
 
 好的，WebSocket 握手协议相关的内容基本已经介绍完了。下一步我们来介绍开发消息通信功能需要了解的一些基础知识。
 
@@ -435,7 +614,17 @@ Payload length 表示以字节为单位的 “有效负载数据” 长度。
 
 **根据上面的算法，我们可以这样进行掩码运算：**
 
-> let uint8 = new Uint8Array(\[0xE6, 0x88, 0x91, 0xE6, 0x98, 0xAF, 0xE9, 0x98,0xBF, 0xE5, 0xAE, 0x9D, 0xE5, 0x93, 0xA5\]); let maskingKey = new Uint8Array(\[0x08, 0xf6, 0xef, 0xb1\]); let maskedUint8 = new Uint8Array(uint8.length); for(let i = 0, j = 0; i < uint8.length; i++, j = i % 4) {   maskedUint8\[i \] = uint8\[i \] ^ maskingKey\[j\]; } console.log(Array.from(maskedUint8).map(num=>Number(num).toString(16)).join(' '));
+```
+let uint8 = new Uint8Array([0xE6, 0x88, 0x91, 0xE6, 0x98, 0xAF, 0xE9, 0x98,0xBF, 0xE5, 0xAE, 0x9D, 0xE5, 0x93, 0xA5]);
+let maskingKey = new Uint8Array([0x08, 0xf6, 0xef, 0xb1]);
+let maskedUint8 = new Uint8Array(uint8.length);
+
+for(let i = 0, j = 0; i < uint8.length; i++, j = i % 4) {
+  maskedUint8[i ] = uint8[i ] ^ maskingKey[j];
+}
+
+console.log(Array.from(maskedUint8).map(num=>Number(num).toString(16)).join(' '));
+```
 
 **以上代码成功运行后，控制台会输出以下结果：**
 
@@ -485,11 +674,94 @@ WebSocket 的每条消息可能被切分成多个数据帧。当 WebSocket 的�
 
 **出于简单考虑，这里只处理文本帧，具体代码如下所示：**
 
-> function parseMessage(buffer) {   // 第一个字节，包含了FIN位，opcode, 掩码位   const firstByte = buffer.readUInt8(0);   // \[FIN, RSV, RSV, RSV, OPCODE, OPCODE, OPCODE, OPCODE\];   // 右移7位取首位，1位，表示是否是最后一帧数据   const isFinalFrame = Boolean((firstByte >>> 7) & 0x01);   console.log("isFIN: ", isFinalFrame);   // 取出操作码，低四位   /\*\*    \* %x0：表示一个延续帧。当 Opcode 为 0 时，表示本次数据传输采用了数据分片，当前收到的数据帧为其中一个数据分片；    \* %x1：表示这是一个文本帧（text frame）；    \* %x2：表示这是一个二进制帧（binary frame）；    \* %x3-7：保留的操作代码，用于后续定义的非控制帧；    \* %x8：表示连接断开；    \* %x9：表示这是一个心跳请求（ping）；    \* %xA：表示这是一个心跳响应（pong）；    \* %xB-F：保留的操作代码，用于后续定义的控制帧。    \*/   const opcode = firstByte & 0x0f;   if(opcode === 0x08) {     // 连接关闭     return;   }   if(opcode === 0x02) {     // 二进制帧     return;   }   if(opcode === 0x01) {     // 目前只处理文本帧     let offset = 1;     const secondByte = buffer.readUInt8(offset);     // MASK: 1位，表示是否使用了掩码，在发送给服务端的数据帧里必须使用掩码，而服务端返回时不需要掩码     const useMask = Boolean((secondByte >>> 7) & 0x01);     console.log("use MASK: ", useMask);     const payloadLen = secondByte & 0x7f; // 低7位表示载荷字节长度     offset += 1;     // 四个字节的掩码     let MASK = \[\];     // 如果这个值在0-125之间，则后面的4个字节（32位）就应该被直接识别成掩码；     if(payloadLen <= 0x7d) {       // 载荷长度小于125       MASK = buffer.slice(offset, 4 + offset);       offset += 4;       console.log("payload length: ", payloadLen);     } elseif(payloadLen === 0x7e) {       // 如果这个值是126，则后面两个字节（16位）内容应该，被识别成一个16位的二进制数表示数据内容大小；       console.log("payload length: ", buffer.readInt16BE(offset));       // 长度是126， 则后面两个字节作为payload length，32位的掩码       MASK = buffer.slice(offset + 2, offset + 2 + 4);       offset += 6;     } else{       // 如果这个值是127，则后面的8个字节（64位）内容应该被识别成一个64位的二进制数表示数据内容大小       MASK = buffer.slice(offset + 8, offset + 8 + 4);       offset += 12;     }     // 开始读取后面的payload，与掩码计算，得到原来的字节内容     const newBuffer = \[\];     const dataBuffer = buffer.slice(offset);     for(let i = 0, j = 0; i < dataBuffer.length; i++, j = i % 4) {       const nextBuf = dataBuffer\[i \];       newBuffer.push(nextBuf ^ MASK\[j\]);     }     return Buffer.from(newBuffer).toString();   }   return ""; }
+```
+function parseMessage(buffer) {
+  // 第一个字节，包含了FIN位，opcode, 掩码位
+  const firstByte = buffer.readUInt8(0);
+  // [FIN, RSV, RSV, RSV, OPCODE, OPCODE, OPCODE, OPCODE];
+  // 右移7位取首位，1位，表示是否是最后一帧数据
+  const isFinalFrame = Boolean((firstByte >>> 7) & 0x01);
+  console.log("isFIN: ", isFinalFrame);
+  // 取出操作码，低四位
+  /**
+   * %x0：表示一个延续帧。当 Opcode 为 0 时，表示本次数据传输采用了数据分片，当前收到的数据帧为其中一个数据分片；
+   * %x1：表示这是一个文本帧（text frame）；
+   * %x2：表示这是一个二进制帧（binary frame）；
+   * %x3-7：保留的操作代码，用于后续定义的非控制帧；
+   * %x8：表示连接断开；
+   * %x9：表示这是一个心跳请求（ping）；
+   * %xA：表示这是一个心跳响应（pong）；
+   * %xB-F：保留的操作代码，用于后续定义的控制帧。
+   */
+  const opcode = firstByte & 0x0f;
+  if(opcode === 0x08) {
+    // 连接关闭
+    return;
+  }
+  if(opcode === 0x02) {
+    // 二进制帧
+    return;
+  }
+  if(opcode === 0x01) {
+    // 目前只处理文本帧
+    let offset = 1;
+    const secondByte = buffer.readUInt8(offset);
+    // MASK: 1位，表示是否使用了掩码，在发送给服务端的数据帧里必须使用掩码，而服务端返回时不需要掩码
+    const useMask = Boolean((secondByte >>> 7) & 0x01);
+    console.log("use MASK: ", useMask);
+    const payloadLen = secondByte & 0x7f; // 低7位表示载荷字节长度
+    offset += 1;
+    // 四个字节的掩码
+    let MASK = [];
+    // 如果这个值在0-125之间，则后面的4个字节（32位）就应该被直接识别成掩码；
+    if(payloadLen <= 0x7d) {
+      // 载荷长度小于125
+      MASK = buffer.slice(offset, 4 + offset);
+      offset += 4;
+      console.log("payload length: ", payloadLen);
+    } elseif(payloadLen === 0x7e) {
+      // 如果这个值是126，则后面两个字节（16位）内容应该，被识别成一个16位的二进制数表示数据内容大小；
+      console.log("payload length: ", buffer.readInt16BE(offset));
+      // 长度是126， 则后面两个字节作为payload length，32位的掩码
+      MASK = buffer.slice(offset + 2, offset + 2 + 4);
+      offset += 6;
+    } else{
+      // 如果这个值是127，则后面的8个字节（64位）内容应该被识别成一个64位的二进制数表示数据内容大小
+      MASK = buffer.slice(offset + 8, offset + 8 + 4);
+      offset += 12;
+    }
+    // 开始读取后面的payload，与掩码计算，得到原来的字节内容
+    const newBuffer = [];
+    const dataBuffer = buffer.slice(offset);
+    for(let i = 0, j = 0; i < dataBuffer.length; i++, j = i % 4) {
+      const nextBuf = dataBuffer[i ];
+      newBuffer.push(nextBuf ^ MASK[j]);
+    }
+    return Buffer.from(newBuffer).toString();
+  }
+  return "";
+}
+```
 
 **创建完 parseMessage 函数，我们来更新一下之前创建的 WebSocket 服务器：**
 
-> server.on("upgrade", function(req, socket) {   socket.on("data", (buffer) => {     const message = parseMessage(buffer);     if(message) {       console.log("Message from client:"+ message);     } elseif(message === null) {       console.log("WebSocket connection closed by the client.");     }   });   if(req.headers\["upgrade"\] !== "websocket") {     socket.end("HTTP/1.1 400 Bad Request");     return;   }   // 省略已有代码 });
+```
+server.on("upgrade", function(req, socket) {
+  socket.on("data", (buffer) => {
+    const message = parseMessage(buffer);
+    if(message) {
+      console.log("Message from client:"+ message);
+    } elseif(message === null) {
+      console.log("WebSocket connection closed by the client.");
+    }
+  });
+  if(req.headers["upgrade"] !== "websocket") {
+    socket.end("HTTP/1.1 400 Bad Request");
+    return;
+  }
+  // 省略已有代码
+});
+```
 
 更新完成之后，我们重新启动服务器，然后继续使用 “发送普通文本” 的示例来测试消息解析功能。
 
@@ -507,11 +779,45 @@ WebSocket 的每条消息可能被切分成多个数据帧。当 WebSocket 的�
 
 **该函数的具体代码如下：**
 
-> function constructReply(data) {   const json = JSON.stringify(data);   const jsonByteLength = Buffer.byteLength(json);   // 目前只支持小于65535字节的负载   const lengthByteCount = jsonByteLength < 126 ? 0 : 2;   const payloadLength = lengthByteCount === 0 ? jsonByteLength : 126;   const buffer = Buffer.alloc(2 + lengthByteCount + jsonByteLength);   // 设置数据帧首字节，设置opcode为1，表示文本帧   buffer.writeUInt8(0b10000001, 0);   buffer.writeUInt8(payloadLength, 1);   // 如果payloadLength为126，则后面两个字节（16位）内容应该，被识别成一个16位的二进制数表示数据内容大小   let payloadOffset = 2;   if(lengthByteCount > 0) {     buffer.writeUInt16BE(jsonByteLength, 2);     payloadOffset += lengthByteCount;   }   // 把JSON数据写入到Buffer缓冲区中   buffer.write(json, payloadOffset);   return buffer; }
+```
+function constructReply(data) {
+  const json = JSON.stringify(data);
+  const jsonByteLength = Buffer.byteLength(json);
+  // 目前只支持小于65535字节的负载
+  const lengthByteCount = jsonByteLength < 126 ? 0 : 2;
+  const payloadLength = lengthByteCount === 0 ? jsonByteLength : 126;
+  const buffer = Buffer.alloc(2 + lengthByteCount + jsonByteLength);
+  // 设置数据帧首字节，设置opcode为1，表示文本帧
+  buffer.writeUInt8(0b10000001, 0);
+  buffer.writeUInt8(payloadLength, 1);
+  // 如果payloadLength为126，则后面两个字节（16位）内容应该，被识别成一个16位的二进制数表示数据内容大小
+  let payloadOffset = 2;
+  if(lengthByteCount > 0) {
+    buffer.writeUInt16BE(jsonByteLength, 2);
+    payloadOffset += lengthByteCount;
+  }
+  // 把JSON数据写入到Buffer缓冲区中
+  buffer.write(json, payloadOffset);
+  return buffer;
+}
+```
 
 **创建完 constructReply 函数，我们再来更新一下之前创建的 WebSocket 服务器：**
 
-> server.on("upgrade", function(req, socket) {   socket.on("data", (buffer) => {     const message = parseMessage(buffer);     if(message) {       console.log("Message from client:"+ message);       // 新增以下&#128071;代码       socket.write(constructReply({ message }));     } elseif(message === null) {       console.log("WebSocket connection closed by the client.");     }   }); });
+```
+server.on("upgrade", function(req, socket) {
+  socket.on("data", (buffer) => {
+    const message = parseMessage(buffer);
+    if(message) {
+      console.log("Message from client:"+ message);
+      // 新增以下&#128071;代码
+      socket.write(constructReply({ message }));
+    } elseif(message === null) {
+      console.log("WebSocket connection closed by the client.");
+    }
+  });
+});
+```
 
 到这里，我们的 WebSocket 服务器已经开发完成了，接下来我们来完整验证一下它的功能。
 
@@ -525,11 +831,154 @@ WebSocket 的每条消息可能被切分成多个数据帧。当 WebSocket 的�
 
 **custom-websocket-server.js文件：**
 
-> const http = require("http"); const port = 8888; const { generateAcceptValue, parseMessage, constructReply } = require("./util"); const server = http.createServer((req, res) => {   res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8"});   res.end("大家好，我是阿宝哥。感谢你阅读“你不知道的WebSocket”"); }); server.on("upgrade", function(req, socket) {   socket.on("data", (buffer) => {     const message = parseMessage(buffer);     if(message) {       console.log("Message from client:"+ message);       socket.write(constructReply({ message }));     } else if(message === null) {       console.log("WebSocket connection closed by the client.");     }   });   if(req.headers\["upgrade"\] !== "websocket") {     socket.end("HTTP/1.1 400 Bad Request");     return;   }   // 读取客户端提供的Sec-WebSocket-Key   const secWsKey = req.headers\["sec-websocket-key"\];   // 使用SHA-1算法生成Sec-WebSocket-Accept   const hash = generateAcceptValue(secWsKey);   // 设置HTTP响应头   const responseHeaders = \[     "HTTP/1.1 101 Web Socket Protocol Handshake",     "Upgrade: WebSocket",     "Connection: Upgrade",     \`Sec-WebSocket-Accept: ${hash}\`,   \];   // 返回握手请求的响应信息   socket.write(responseHeaders.join("\\r\\n") + "\\r\\n\\r\\n"); }); server.listen(port, () =>   console.log(\`Server running at http://localhost:${port}\`) );
+```
+const http = require("http");
+const port = 8888;
+const { generateAcceptValue, parseMessage, constructReply } = require("./util");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8"});
+  res.end("大家好，我是阿宝哥。感谢你阅读“你不知道的WebSocket”");
+});
+server.on("upgrade", function(req, socket) {
+  socket.on("data", (buffer) => {
+    const message = parseMessage(buffer);
+    if(message) {
+      console.log("Message from client:"+ message);
+      socket.write(constructReply({ message }));
+    } else if(message === null) {
+      console.log("WebSocket connection closed by the client.");
+    }
+  });
+  if(req.headers["upgrade"] !== "websocket") {
+    socket.end("HTTP/1.1 400 Bad Request");
+    return;
+  }
+  // 读取客户端提供的Sec-WebSocket-Key
+  const secWsKey = req.headers["sec-websocket-key"];
+  // 使用SHA-1算法生成Sec-WebSocket-Accept
+  const hash = generateAcceptValue(secWsKey);
+  // 设置HTTP响应头
+  const responseHeaders = [
+    "HTTP/1.1 101 Web Socket Protocol Handshake",
+    "Upgrade: WebSocket",
+    "Connection: Upgrade",
+    `Sec-WebSocket-Accept: ${hash}`,
+  ];
+  // 返回握手请求的响应信息
+  socket.write(responseHeaders.join("\r\n") + "\r\n\r\n");
+});
+
+server.listen(port, () =>
+  console.log(`Server running at http://localhost:${port}`)
+);
+```
 
 **util.js文件：**
 
-> const crypto = require("crypto"); const MAGIC\_KEY = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"; function generateAcceptValue(secWsKey) {   return crypto     .createHash("sha1")     .update(secWsKey + MAGIC\_KEY, "utf8")     .digest("base64"); } function parseMessage(buffer) {   // 第一个字节，包含了FIN位，opcode, 掩码位   const firstByte = buffer.readUInt8(0);   // \[FIN, RSV, RSV, RSV, OPCODE, OPCODE, OPCODE, OPCODE\];   // 右移7位取首位，1位，表示是否是最后一帧数据   const isFinalFrame = Boolean((firstByte >>> 7) & 0x01);   console.log("isFIN: ", isFinalFrame);   // 取出操作码，低四位   /\*\*    \* %x0：表示一个延续帧。当 Opcode 为 0 时，表示本次数据传输采用了数据分片，当前收到的数据帧为其中一个数据分片；    \* %x1：表示这是一个文本帧（text frame）；    \* %x2：表示这是一个二进制帧（binary frame）；    \* %x3-7：保留的操作代码，用于后续定义的非控制帧；    \* %x8：表示连接断开；    \* %x9：表示这是一个心跳请求（ping）；    \* %xA：表示这是一个心跳响应（pong）；    \* %xB-F：保留的操作代码，用于后续定义的控制帧。    \*/   const opcode = firstByte & 0x0f;   if(opcode === 0x08) {     // 连接关闭     return;   }   if(opcode === 0x02) {     // 二进制帧     return;   }   if(opcode === 0x01) {     // 目前只处理文本帧     let offset = 1;     const secondByte = buffer.readUInt8(offset);     // MASK: 1位，表示是否使用了掩码，在发送给服务端的数据帧里必须使用掩码，而服务端返回时不需要掩码     const useMask = Boolean((secondByte >>> 7) & 0x01);     console.log("use MASK: ", useMask);     const payloadLen = secondByte & 0x7f; // 低7位表示载荷字节长度     offset += 1;     // 四个字节的掩码     let MASK = \[\];     // 如果这个值在0-125之间，则后面的4个字节（32位）就应该被直接识别成掩码；     if(payloadLen <= 0x7d) {       // 载荷长度小于125       MASK = buffer.slice(offset, 4 + offset);       offset += 4;       console.log("payload length: ", payloadLen);     } else if(payloadLen === 0x7e) {       // 如果这个值是126，则后面两个字节（16位）内容应该，被识别成一个16位的二进制数表示数据内容大小；       console.log("payload length: ", buffer.readInt16BE(offset));       // 长度是126， 则后面两个字节作为payload length，32位的掩码       MASK = buffer.slice(offset + 2, offset + 2 + 4);       offset += 6;     } else{       // 如果这个值是127，则后面的8个字节（64位）内容应该被识别成一个64位的二进制数表示数据内容大小       MASK = buffer.slice(offset + 8, offset + 8 + 4);       offset += 12;     }     // 开始读取后面的payload，与掩码计算，得到原来的字节内容     const newBuffer = \[\];     const dataBuffer = buffer.slice(offset);     for(let i = 0, j = 0; i < dataBuffer.length; i++, j = i % 4) {       const nextBuf = dataBuffer\[i \];       newBuffer.push(nextBuf ^ MASK\[j\]);     }     return Buffer.from(newBuffer).toString();   }   return ""; } function constructReply(data) {   const json = JSON.stringify(data);   const jsonByteLength = Buffer.byteLength(json);   // 目前只支持小于65535字节的负载   const lengthByteCount = jsonByteLength < 126 ? 0 : 2;   const payloadLength = lengthByteCount === 0 ? jsonByteLength : 126;   const buffer = Buffer.alloc(2 + lengthByteCount + jsonByteLength);   // 设置数据帧首字节，设置opcode为1，表示文本帧   buffer.writeUInt8(0b10000001, 0);   buffer.writeUInt8(payloadLength, 1);   // 如果payloadLength为126，则后面两个字节（16位）内容应该，被识别成一个16位的二进制数表示数据内容大小   let payloadOffset = 2;   if(lengthByteCount > 0) {     buffer.writeUInt16BE(jsonByteLength, 2);     payloadOffset += lengthByteCount;   }   // 把JSON数据写入到Buffer缓冲区中   buffer.write(json, payloadOffset);   return buffer; } module.exports = {   generateAcceptValue,   parseMessage,   constructReply, };
+```
+const crypto = require("crypto");
+const MAGIC_KEY = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+function generateAcceptValue(secWsKey) {
+  return crypto
+    .createHash("sha1")
+    .update(secWsKey + MAGIC_KEY, "utf8")
+    .digest("base64");
+}
+
+function parseMessage(buffer) {
+  // 第一个字节，包含了FIN位，opcode, 掩码位
+  const firstByte = buffer.readUInt8(0);
+  // [FIN, RSV, RSV, RSV, OPCODE, OPCODE, OPCODE, OPCODE];
+  // 右移7位取首位，1位，表示是否是最后一帧数据
+  const isFinalFrame = Boolean((firstByte >>> 7) & 0x01);
+  console.log("isFIN: ", isFinalFrame);
+  // 取出操作码，低四位
+  /**
+   * %x0：表示一个延续帧。当 Opcode 为 0 时，表示本次数据传输采用了数据分片，当前收到的数据帧为其中一个数据分片；
+   * %x1：表示这是一个文本帧（text frame）；
+   * %x2：表示这是一个二进制帧（binary frame）；
+   * %x3-7：保留的操作代码，用于后续定义的非控制帧；
+   * %x8：表示连接断开；
+   * %x9：表示这是一个心跳请求（ping）；
+   * %xA：表示这是一个心跳响应（pong）；
+   * %xB-F：保留的操作代码，用于后续定义的控制帧。
+   */
+  const opcode = firstByte & 0x0f;
+  if(opcode === 0x08) {
+    // 连接关闭
+    return;
+  }
+  if(opcode === 0x02) {
+    // 二进制帧
+    return;
+  }
+  if(opcode === 0x01) {
+    // 目前只处理文本帧
+    let offset = 1;
+    const secondByte = buffer.readUInt8(offset);
+    // MASK: 1位，表示是否使用了掩码，在发送给服务端的数据帧里必须使用掩码，而服务端返回时不需要掩码
+    const useMask = Boolean((secondByte >>> 7) & 0x01);
+    console.log("use MASK: ", useMask);
+    const payloadLen = secondByte & 0x7f; // 低7位表示载荷字节长度
+    offset += 1;
+    // 四个字节的掩码
+    let MASK = [];
+    // 如果这个值在0-125之间，则后面的4个字节（32位）就应该被直接识别成掩码；
+    if(payloadLen <= 0x7d) {
+      // 载荷长度小于125
+      MASK = buffer.slice(offset, 4 + offset);
+      offset += 4;
+      console.log("payload length: ", payloadLen);
+    } else if(payloadLen === 0x7e) {
+      // 如果这个值是126，则后面两个字节（16位）内容应该，被识别成一个16位的二进制数表示数据内容大小；
+      console.log("payload length: ", buffer.readInt16BE(offset));
+      // 长度是126， 则后面两个字节作为payload length，32位的掩码
+      MASK = buffer.slice(offset + 2, offset + 2 + 4);
+      offset += 6;
+    } else{
+      // 如果这个值是127，则后面的8个字节（64位）内容应该被识别成一个64位的二进制数表示数据内容大小
+      MASK = buffer.slice(offset + 8, offset + 8 + 4);
+      offset += 12;
+    }
+    // 开始读取后面的payload，与掩码计算，得到原来的字节内容
+    const newBuffer = [];
+    const dataBuffer = buffer.slice(offset);
+    for(let i = 0, j = 0; i < dataBuffer.length; i++, j = i % 4) {
+      const nextBuf = dataBuffer[i ];
+      newBuffer.push(nextBuf ^ MASK[j]);
+    }
+    return Buffer.from(newBuffer).toString();
+  }
+  return "";
+}
+
+function constructReply(data) {
+  const json = JSON.stringify(data);
+  const jsonByteLength = Buffer.byteLength(json);
+  // 目前只支持小于65535字节的负载
+  const lengthByteCount = jsonByteLength < 126 ? 0 : 2;
+  const payloadLength = lengthByteCount === 0 ? jsonByteLength : 126;
+  const buffer = Buffer.alloc(2 + lengthByteCount + jsonByteLength);
+  // 设置数据帧首字节，设置opcode为1，表示文本帧
+  buffer.writeUInt8(0b10000001, 0);
+  buffer.writeUInt8(payloadLength, 1);
+  // 如果payloadLength为126，则后面两个字节（16位）内容应该，被识别成一个16位的二进制数表示数据内容大小
+  let payloadOffset = 2;
+  if(lengthByteCount > 0) {
+    buffer.writeUInt16BE(jsonByteLength, 2);
+    payloadOffset += lengthByteCount;
+  }
+  // 把JSON数据写入到Buffer缓冲区中
+  buffer.write(json, payloadOffset);
+  return buffer;
+}
+
+module.exports = {
+  generateAcceptValue,
+  parseMessage,
+  constructReply,
+};
+```
 
 其实服务器向浏览器推送信息，除了使用 WebSocket 技术之外，还可以使用 [SSE](https://cloud.tencent.com/developer/tools/blog-entry?target=http%3A%2F%2Fwww.52im.net%2Fthread-3695-1-1.html%252315&source=article&objectId=1887095)（Server-Sent Events）。它让服务器可以向客户端流式发送文本消息，比如服务器上生成的实时消息。
 
@@ -609,7 +1058,9 @@ WebSocket 是一种与 HTTP 不同的协议。两者都位于 OSI 模型的应�
 
 **百度百科上关于Socket的描述是这样：**
 
-> Socket 的英文原义是“孔”或“插座”：作为 BSD UNIX 的进程通信机制，取后一种意思。通常也称作”套接字“，用于描述IP地址和端口，是一个通信链的句柄，可以用来实现不同虚拟机或不同计算机之间的通信。 在Internet 上的主机一般运行了多个服务软件，同时提供几种服务。每种服务都打开一个Socket，并绑定到一个端口上，不同的端口对应于不同的服务。Socket 正如其英文原义那样，像一个多孔插座。一台主机犹如布满各种插座的房间，每个插座有一个编号，有的插座提供 220 伏交流电， 有的提供 110 伏交流电，有的则提供有线电视节目。 客户软件将插头插到不同编号的插座，就可以得到不同的服务。
+> Socket 的英文原义是“孔”或“插座”：作为 BSD UNIX 的进程通信机制，取后一种意思。通常也称作”套接字“，用于描述IP地址和端口，是一个通信链的句柄，可以用来实现不同虚拟机或不同计算机之间的通信。 
+>
+> 在Internet 上的主机一般运行了多个服务软件，同时提供几种服务。每种服务都打开一个Socket，并绑定到一个端口上，不同的端口对应于不同的服务。Socket 正如其英文原义那样，像一个多孔插座。一台主机犹如布满各种插座的房间，每个插座有一个编号，有的插座提供 220 伏交流电， 有的提供 110 伏交流电，有的则提供有线电视节目。 客户软件将插头插到不同编号的插座，就可以得到不同的服务。
 
 **关于 Socket，可以总结以下几点：**
 
