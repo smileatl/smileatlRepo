@@ -14,3 +14,14 @@ Host 10.60.23.154
   IdentityFile D:/Users/yl6306/.ssh/centossshkey/id_rsa
 ```
 
+## 2、github的ssh出问题
+
+如果没有找到，也是要去config里添加私钥
+
+```config
+Host github.com
+  HostName github.com
+  User smileatl
+  IdentityFile D:/Users/yl6306/.ssh/githubsshkey/id_rsa
+```
+
