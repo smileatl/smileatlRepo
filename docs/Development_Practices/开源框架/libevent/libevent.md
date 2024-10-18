@@ -27,3 +27,27 @@ bufferevent有三个回调函数：
 **写回调** – 当bufferevent将自身写缓冲的数据写到底层写缓冲区的时候触发写事件回调, 由于数据最终是写入了内核的写缓冲区中, 应用程序已经无法控制, 这个事件对于应用程序来说基本没什么用, 只是通知功能.
 
 **事件回调** – 当bufferevent绑定的socket连接, 断开或者异常的时候触发事件回调.
+
+
+
+## 函数调用
+
+### bufferevent_write
+
+```c
+/**
+  向 bufferevent 缓冲区写入数据。
+
+  bufferevent_write() 函数可用于将数据写入文件描述符。数据会被追加到输出缓冲区，并在文件描述符可写时自动写入。
+
+  @param bufev 要写入的 bufferevent 对象
+  @param data 指向要写入数据的指针
+  @param size 数据的长度，以字节为单位
+  @return 成功返回 0，发生错误返回 -1
+  @see bufferevent_write_buffer()
+  */
+EVENT2_EXPORT_SYMBOL
+int bufferevent_write(struct bufferevent *bufev,
+                      const void *data, size_t size);
+```
+
