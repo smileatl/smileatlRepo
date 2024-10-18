@@ -1067,7 +1067,7 @@ int main()
 
 ```c
 struct student
-{
+{V
     char *name; // 只是给name这个指针变量本身分配了4 个字节。name 指针并没有指向一个合法的地址，这时候其内部存的只是一些乱码。
     int score;
 }stu,*pstu;
