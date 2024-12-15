@@ -137,28 +137,28 @@ nav:
     - 关于网站: about.md
   - 项目:
     - smileatlRepo:
-      - 初识smileatlRepo: MyProject/smileatlRepo/10.初识smileatlRepo.md
+      - 初识smileatlRepo: MyWork/smileatlRepo/10.初识smileatlRepo.md
     - Interview:
-      - cpp: MyProject/smileatl_interview/10.cpp
-      - cpp关键字: MyProject/smileatl_interview/15.cpp关键字.md
-      - cpp_stl: MyProject/smileatl_interview/20.cpp_stl.md
-      - cpp新特性: MyProject/smileatl_interview/30.cpp新特性.md
-      - cpp其他: MyProject/smileatl_interview/40.cpp其他.md
-      - gcc_g++_gdb: MyProject/smileatl_interview/45.gcc_g++_gdb.md
-      - Linux: MyProject/smileatl_interview/50.Linux.md
-      - 操作系统: MyProject/smileatl_interview/60.操作系统.md
-      - 操作系统-网络系统: MyProject/smileatl_interview/70.操作系统-网络系统.md
-      - 操作系统-内存管理: MyProject/smileatl_interview/80.操作系统-内存管理.md
-      - 操作系统-多线程_多进程_线程池: MyProject/smileatl_interview/85.操作系统-多线程_多进程_线程池.md
-      - 计算机网络: MyProject/smileatl_interview/90.计算机网络.md
-      - 数据结构与算法: MyProject/smileatl_interview/100.数据结构与算法.md
-      - MySQL: MyProject/smileatl_interview/110.MySQL.md
-      - Redis: MyProject/smileatl_interview/115.Redis.md
-      - 设计模式: MyProject/smileatl_interview/130.设计模式.md
-      - 系统设计: MyProject/smileatl_interview/140.系统设计.md
-      - 工具: MyProject/smileatl_interview/150.工具.md
-      - 技术支持: MyProject/smileatl_interview/190.技术支持.md
-      - HR面相关问题: MyProject/smileatl_interview/200.HR面相关问题.md
+      - cpp: MyWork/smileatl_interview/10.cpp
+      - cpp关键字: MyWork/smileatl_interview/15.cpp关键字.md
+      - cpp_stl: MyWork/smileatl_interview/20.cpp_stl.md
+      - cpp新特性: MyWork/smileatl_interview/30.cpp新特性.md
+      - cpp其他: MyWork/smileatl_interview/40.cpp其他.md
+      - gcc_g++_gdb: MyWork/smileatl_interview/45.gcc_g++_gdb.md
+      - Linux: MyWork/smileatl_interview/50.Linux.md
+      - 操作系统: MyWork/smileatl_interview/60.操作系统.md
+      - 操作系统-网络系统: MyWork/smileatl_interview/70.操作系统-网络系统.md
+      - 操作系统-内存管理: MyWork/smileatl_interview/80.操作系统-内存管理.md
+      - 操作系统-多线程_多进程_线程池: MyWork/smileatl_interview/85.操作系统-多线程_多进程_线程池.md
+      - 计算机网络: MyWork/smileatl_interview/90.计算机网络.md
+      - 数据结构与算法: MyWork/smileatl_interview/100.数据结构与算法.md
+      - MySQL: MyWork/smileatl_interview/110.MySQL.md
+      - Redis: MyWork/smileatl_interview/115.Redis.md
+      - 设计模式: MyWork/smileatl_interview/130.设计模式.md
+      - 系统设计: MyWork/smileatl_interview/140.系统设计.md
+      - 工具: MyWork/smileatl_interview/150.工具.md
+      - 技术支持: MyWork/smileatl_interview/190.技术支持.md
+      - HR面相关问题: MyWork/smileatl_interview/200.HR面相关问题.md
   - 工作:
     - 编程语言:
       - C:

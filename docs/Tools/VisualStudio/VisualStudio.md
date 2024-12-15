@@ -133,3 +133,13 @@
 2. 或者按照原来，设置一个主启动项目并启动，然后右键另一个项目-选择调试-启动新实例
 
 ![在这里插入图片描述](resource/img/7cebec789dbcc99eea7090172272b0c9.png)
+
+## visual studio的cmake项目单独编译某一个模块
+
+start item选中想要重新编译的模块
+
+![](resource/img/img-20241215120031996.png)
+
+然后在build这里就可以重新编译它了
+
+![](resource/img/img-20241215120057836.png)
