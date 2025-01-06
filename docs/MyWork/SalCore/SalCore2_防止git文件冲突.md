@@ -349,7 +349,7 @@ cmake --build .
 
 [“链接器”属性页 | Microsoft Learn](https://learn.microsoft.com/zh-cn/cpp/build/reference/linker-property-pages?view=msvc-170)
 
-进程可以使用 **FreeConsole** 函数从其控制台分离出来。 如果其他进程共享该控制台，则不会销毁控制台。如果设置了console，操作系统为控制台应用程序提供控制台，则不会销毁该控制台。
+进程可以使用 **FreeConsole** 函数从其控制台分离出来。 如果其他进程共享该控制台，则不会销毁控制台。
 
 - 在vs2015中，子系统设置默认就是空
 - 在vs2019中，子系统设置默认却是Console (/SUBSYSTEM:CONSOLE)
@@ -440,3 +440,127 @@ POSIX - 与 Windows NT 中的 POSIX 子系统一起运行的应用程序。
 3. **混合场景**： 如果你需要同时支持 GUI 和控制台模式，可以在代码中动态检测是否需要附加控制台，并选择性地调用相关代码。
 
 总结来说，选择 `CONSOLE` 或 `WINDOWS` 主要取决于程序是否需要控制台以及应用的运行环境。
+
+## 20、通过编译好的exe文件直接启动，freeconsole可以将控制台终端关闭，但是在vs2019里启动exe文件，在debug的时候，freeconsole没办法实时将控制台终端关闭
+
+在 Visual Studio 中调试时，`FreeConsole` 无法实时关闭控制台窗口的原因是，**调试器会附加到进程并管理其输出**。即使你的程序调用了 `FreeConsole`，调试器依然控制着控制台窗口，这会干扰 `FreeConsole` 的行为。
+
+------
+
+### **问题原因**
+
+1. **调试器控制**：当在 Visual Studio 中运行程序时，调试器会附加到控制台窗口，即使 `FreeConsole` 成功释放了控制台，调试器的附加状态可能会重新激活或阻止关闭控制台。
+2. **附加状态**：Visual Studio 在调试模式下启动控制台程序时，自动附加了控制台来捕获输出，这会影响 `FreeConsole` 的操作效果。
+
+------
+
+### **解决方案**
+
+以下方法可以使 `FreeConsole` 在调试模式下有效：
+
+------
+
+#### **方法 2：通过外部终端启动调试**
+
+在 Visual Studio 中设置外部终端运行程序，以避免调试器附加控制台窗口：
+
+1. 打开项目的属性窗口。
+2. 转到 **Configuration Properties -> Debugging**。
+3. 将 **Console** 设置为 **External Terminal**。
+4. 启动调试，程序将在外部终端中运行，这样调用 `FreeConsole` 后可以正常关闭控制台。
+
+------
+
+#### **方法 3：在 Release 模式下测试**
+
+调试模式下，控制台与调试器绑定较紧。通过 Release 模式运行独立的 `.exe` 文件，控制台不会受到调试器干扰，`FreeConsole` 能正常工作。
+
+------
+
+#### **方法 4：在特定情况下调用 `FreeConsole`**
+
+在调试模式中增加判断，仅在非调试环境下调用 `FreeConsole`：
+
+```c
+#include <windows.h>
+#include <stdio.h>
+
+int main() {
+    printf("Hello, Console!\n");
+
+#ifdef _DEBUG
+    printf("Debug mode: Console will not be freed.\n");
+#else
+    FreeConsole();
+#endif
+
+    // 模拟程序后续运行
+    Sleep(5000);
+
+    return 0;
+}
+```
+
+------
+
+### **总结**
+
+- Visual Studio 调试器的附加行为会干扰 `FreeConsole` 的正常运行。
+- 最直接的解决方案是通过 **Release 模式** 或 **外部终端** 运行程序，避免调试器的干扰。
+- 如果必须在调试模式下运行，可以手动分离调试器附加状态，但这会导致调试器无法继续跟踪程序。
+
+## 25、visual studio工程右键设置configuration properties却可以将linker-system-subsystem设置为空
+
+在 Visual Studio 的工程设置中，将 `Linker -> System -> Subsystem` 设置为空的确是可以的，但这通常是不建议的，因为这样做可能导致链接器无法正确设置程序的运行模式，甚至可能生成无法运行的可执行文件。
+
+------
+
+### **为什么 Visual Studio 允许 Subsystem 为空？**
+
+1. **默认行为**： 如果你不手动设置 `Subsystem`，链接器会尝试根据程序的入口点推断出适合的 `Subsystem` 类型：
+   - 如果入口点是 `main` 或 `wmain`，链接器假定为 `/SUBSYSTEM:CONSOLE`。
+   - 如果入口点是 `WinMain` 或 `wWinMain`，链接器假定为 `/SUBSYSTEM:WINDOWS`。
+2. **灵活性**： 在某些特殊情况下，开发者可能希望通过命令行或自定义脚本控制 `Subsystem` 的设置，而不是通过 Visual Studio 的图形界面。因此，Visual Studio 提供了不显式指定 `Subsystem` 的选项。
+
+------
+
+### **将 Subsystem 设置为空会发生什么？**
+
+- **成功推断**： 如果程序的入口点符合链接器的推断规则（如 `main` 对应 `CONSOLE` 或 `WinMain` 对应 `WINDOWS`），程序可以正常构建并运行。
+- **推断失败**： 如果链接器无法推断出合适的 `Subsystem`，会报错或生成一个无法运行的程序。例如：
+  - 链接器提示 `unresolved external symbol: _main` 或 `_WinMain@16`。
+  - 生成的程序运行时会立即崩溃，或无法启动。
+
+------
+
+### **是否可以安全将 Subsystem 留空？**
+
+- **可以留空的情况**：
+  - 你完全依赖链接器根据入口点推断 `Subsystem`。
+  - 程序的入口点符合默认推断规则（如 `main` 对应 `CONSOLE` 或 `WinMain` 对应 `WINDOWS`）。
+- **不建议留空的情况**：
+  - 如果你需要明确控制程序的运行模式（比如动态切换 Subsystem）。
+  - 如果程序具有非标准入口点（例如，自定义的 `_start` 或 `DllMain`）。
+
+------
+
+### **推荐设置 Subsystem 的方法**
+
+1. **明确指定**： 在 Visual Studio 中明确设置 Subsystem，可以避免不必要的推断错误：
+
+   - 如果是控制台程序，设置为 `/SUBSYSTEM:CONSOLE`。
+   - 如果是图形界面程序，设置为 `/SUBSYSTEM:WINDOWS`。
+
+2. **手动设置**： 如果需要手动修改，打开 `Configuration Properties -> Linker -> System`，选择适当的 Subsystem。
+
+3. **CMake 工程**： 在 `CMakeLists.txt` 中可以通过以下方式设置：
+
+   ```cmake
+   set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "/SUBSYSTEM:CONSOLE")
+   ```
+
+------
+
+### **总结**
+
+虽然 Visual Studio 允许 `Subsystem` 为空，但为了更稳定的构建和运行，建议明确设置。只有在确保程序入口点符合默认推断规则时，才可以安全地留空。
