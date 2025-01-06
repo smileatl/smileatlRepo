@@ -134,7 +134,7 @@
 
 ![在这里插入图片描述](resource/img/7cebec789dbcc99eea7090172272b0c9.png)
 
-## visual studio的cmake项目单独编译某一个模块
+## 22、visual studio的cmake项目单独编译某一个模块
 
 start item选中想要重新编译的模块
 
@@ -146,7 +146,9 @@ start item选中想要重新编译的模块
 
 ## 25、清除cmake工程的缓存
 
-切换到目标视图去delete cmakecache，然后重新generate
+切换到目标视图去CMake Cache->delete cmakecache，然后重新generate
+
+直接点击generate cache好像就执行了删除和generate两步的操作
 
 ## 30、解决方案clean all发生了
 
@@ -191,4 +193,8 @@ MyProject/
 
 ## 35、对于新添加并修改的cpp文件，vs并没有去编译它的问题
 
-对于新添加并修改的cpp文件，需要重新生成一下cmake缓存再编译，才能识别到源文件的添加与缓存
+对于新添加并修改的cpp文件，需要重新生成一下cmake缓存再编译，才能识别到源文件的添加与缓存，重新生成缓存的方法见25点。
+
+## 40、对于在cmake文件中新增的一些编译选项，vs中并没有生效的问题
+
+也是需要重新生成一下cmake缓存再编译，重新生成缓存的方法见25点。
