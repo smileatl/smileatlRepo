@@ -343,37 +343,7 @@ cmake --build .
 
 在C语言动态库中使用 `extern "C"` 是为了确保在C++中调用这些函数时，函数名不会被C++编译器修饰，从而保证C和C++代码的兼容性。这在混合编程环境中尤其重要，确保你的动态库能够被不同语言的程序正确调用。
 
-## 10、配置属性-链接器-子系统设置，为空，才能正常在debug时通过FreeConsole将console窗口关闭
 
-[FreeConsole 函数 - Windows Console | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows/console/freeconsole)
-
-[“链接器”属性页 | Microsoft Learn](https://learn.microsoft.com/zh-cn/cpp/build/reference/linker-property-pages?view=msvc-170)
-
-进程可以使用 **FreeConsole** 函数从其控制台分离出来。 如果其他进程共享该控制台，则不会销毁控制台。
-
-- 在vs2015中，子系统设置默认就是空
-- 在vs2019中，子系统设置默认却是Console (/SUBSYSTEM:CONSOLE)
-
-```
-SubSystem
-/SUBSYSTEM 选项告知操作系统如何运行 .exe 文件。 子系统的选择会影响链接器将选择的入口点符号（或入口点函数）。
-
-选择项
-
-未设置 - 未设置子系统。
-控制台 - Win32 字符模式应用程序。 操作系统为控制台应用程序提供控制台。 如果定义了 main 或 wmain，则 CONSOLE 为默认值。
-Windows - 应用程序不需要控制台，可能是因为它会创建自己的窗口以与用户交互。 如果定义了 WinMain 或 wWinMain，则 WINDOWS 为默认值。
-本机 - Windows NT 的设备驱动程序。 如果指定了 /DRIVER:WDM，则 NATIVE 为默认值。
-EFI 应用程序 - EFI 应用程序。
-EFI 启动服务驱动程序 - EFI 启动服务驱动程序。
-EFI ROM - EFI ROM。
-EFI 运行时 - EFI 运行时。
-POSIX - 与 Windows NT 中的 POSIX 子系统一起运行的应用程序。
-```
-
-> 最终：试来试去还是不行，cmake编译就是没办法把subsystem设置为空
->
-> 但是visual studio工程右键设置configuration properties却可以将linker-system-subsystem设置为空
 
 ## 15、/SUBSYSTEM:WINDOWS和/SUBSYSTEM:CONSOLE 有什么区别
 
@@ -515,7 +485,7 @@ int main() {
 
 ------
 
-### **为什么 Visual Studio 允许 Subsystem 为空？**
+### 30、**为什么 Visual Studio 允许 Subsystem 为空？**
 
 1. **默认行为**： 如果你不手动设置 `Subsystem`，链接器会尝试根据程序的入口点推断出适合的 `Subsystem` 类型：
    - 如果入口点是 `main` 或 `wmain`，链接器假定为 `/SUBSYSTEM:CONSOLE`。
@@ -564,3 +534,43 @@ int main() {
 ### **总结**
 
 虽然 Visual Studio 允许 `Subsystem` 为空，但为了更稳定的构建和运行，建议明确设置。只有在确保程序入口点符合默认推断规则时，才可以安全地留空。
+
+## 30、最终在debug时关闭console的终极解决方案
+
+- tools-options-debugging-general-automatically close the console when debugging stops
+- vs2019要自己设置，vs2015是自动设置了在调试停止时关闭控制台窗口
+- 真正影响的不是设置SubSystem为空，而是automatically close the console when debugging stops
+
+### 配置属性-链接器-子系统设置为空，也可以正常在debug时通过FreeConsole将console窗口关闭
+
+[FreeConsole 函数 - Windows Console | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows/console/freeconsole)
+
+[“链接器”属性页 | Microsoft Learn](https://learn.microsoft.com/zh-cn/cpp/build/reference/linker-property-pages?view=msvc-170)
+
+进程可以使用 **FreeConsole** 函数从其控制台分离出来。 如果其他进程共享该控制台，则不会销毁控制台。
+
+- 在vs2015中，子系统设置默认就是空
+- 在vs2019中，子系统设置默认是Console (/SUBSYSTEM:CONSOLE)
+
+```
+SubSystem
+/SUBSYSTEM 选项告知操作系统如何运行 .exe 文件。 子系统的选择会影响链接器将选择的入口点符号（或入口点函数）。
+
+选择项
+
+未设置 - 未设置子系统。
+控制台 - Win32 字符模式应用程序。 操作系统为控制台应用程序提供控制台。 如果定义了 main 或 wmain，则 CONSOLE 为默认值。
+Windows - 应用程序不需要控制台，可能是因为它会创建自己的窗口以与用户交互。 如果定义了 WinMain 或 wWinMain，则 WINDOWS 为默认值。
+本机 - Windows NT 的设备驱动程序。 如果指定了 /DRIVER:WDM，则 NATIVE 为默认值。
+EFI 应用程序 - EFI 应用程序。
+EFI 启动服务驱动程序 - EFI 启动服务驱动程序。
+EFI ROM - EFI ROM。
+EFI 运行时 - EFI 运行时。
+POSIX - 与 Windows NT 中的 POSIX 子系统一起运行的应用程序。
+```
+
+> 最终：
+>
+> - subsystem为空，debug调试器就不会影响控制台console，freeconsole就能正常关闭console
+> - cmake编译就是没办法把subsystem设置为空
+> - 但是visual studio工程右键设置configuration properties却可以将linker-system-subsystem设置为空
