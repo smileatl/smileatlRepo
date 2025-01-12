@@ -537,6 +537,8 @@ int main() {
 
 ## 30、最终在debug时关闭console的终极解决方案
 
+### 真正的解决方案
+
 - tools-options-debugging-general-automatically close the console when debugging stops
 - vs2019要自己设置，vs2015是自动设置了在调试停止时关闭控制台窗口
 - 真正影响的不是设置SubSystem为空，而是automatically close the console when debugging stops

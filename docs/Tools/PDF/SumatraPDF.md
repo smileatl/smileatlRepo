@@ -12,3 +12,6 @@ TreeFontSize = 17
 
 <https://www.sumatrapdf.net/docs/Editing-annotations.html>
 
+## 缩放
+
+自定义缩放：`ctrl+y`
