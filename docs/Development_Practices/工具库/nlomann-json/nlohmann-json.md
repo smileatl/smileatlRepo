@@ -178,8 +178,12 @@ end:
 
 nlohmann::json对象，如果是object、array置空是用nullptr，如果是字符串用“”
 
-利用json取数据的时候，尽量用 `at`，而不用 `[]`，不然好像捕获不到异常
+利用json取数据的时候，尽量用 `at`，而不用 `[]`；因为const +  `[]` 会捕获不到异常导致程序崩溃，当没有值时，用`[]`去取值会创建值，而const又不允许修改，nlohmann::json会直接让程序崩掉
 
 操作json的东西最好都放在try里面
 
 赋值的时候用 `[]` 可以
+
+## nlohmann::json parse空指针会导致程序崩溃
+
+
