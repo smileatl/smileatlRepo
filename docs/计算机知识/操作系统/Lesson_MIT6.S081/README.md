@@ -9,3 +9,7 @@
 ## 课程视频
 
 [MIT 6.S081 2020 操作系统 [中英文字幕]_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV19k4y1C7kA/?from=search&seid=5542820295808098475&vd_source=75e186a4ea53b333296d6f44a426177c)
+
+## 蒋炎岩
+
+[操作系统：设计与实现 (2022 春季学期)](https://jyywiki.cn/OS/2022/index.html)
