@@ -15,3 +15,9 @@ TreeFontSize = 17
 ## 缩放
 
 自定义缩放：`ctrl+y`
+
+## 视图
+
+![](resource/img/image%202.png)
+
+111
