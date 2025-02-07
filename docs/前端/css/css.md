@@ -64,6 +64,12 @@
 
 ![devTools](resource/img/img-20240917233757711.png)
 
+```css
+/* 比如说color，原来是: , var是变量的意思 */
+color: var(--code-property)
+/* 现在可以自定义成： */
+color: #222222
+```
 ## 编辑与预览模式
 
 ```css
