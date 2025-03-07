@@ -1,0 +1,6646 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="smileatl 个人知识库，Welcome！在广袤的空间和无限的时间中，能与你共享同一颗行星与同一段时光是我的荣幸。">
+      
+      
+        <meta name="author" content="smileatl">
+      
+      
+        <link rel="canonical" href="https://smileatl.github.io/smileatlRepo/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/Linux/linux%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/">
+      
+      
+        <link rel="prev" href="../../../YML/yml/">
+      
+      
+        <link rel="next" href="../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B/Linux%E7%B3%BB%E7%BB%9F%E5%87%BD%E6%95%B0/">
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+    
+    
+      
+        <title>linux系统基础 - smileatlRepo</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#linu" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="smileatlRepo" class="md-header__button md-logo" aria-label="smileatlRepo" data-md-component="logo">
+      
+  <img src="../../../assets/website_icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            smileatlRepo
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              linux系统基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/smileatl/smileatlRepo" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    smileatl/smileatlRepo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../start_learning/" class="md-tabs__link">
+          
+  
+  Get started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../MyWork/smileatlRepo/10.%E5%88%9D%E8%AF%86smileatlRepo/" class="md-tabs__link">
+          
+  
+  项目
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../C/myC/10.myC/" class="md-tabs__link">
+          
+  
+  工作
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E5%AD%A6%E4%B9%A0/Postgraduate/00.publications/" class="md-tabs__link">
+          
+  
+  学习
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E6%94%B6%E8%97%8F/05.%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8F%E5%A4%B9/" class="md-tabs__link">
+          
+  
+  收藏
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E9%9A%8F%E7%AC%94/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E5%88%9D%E8%AF%86%E7%94%9F%E6%B4%BB/" class="md-tabs__link">
+          
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../message/" class="md-tabs__link">
+        
+  
+    
+  
+  留言
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="smileatlRepo" class="md-nav__button md-logo" aria-label="smileatlRepo" data-md-component="logo">
+      
+  <img src="../../../assets/website_icon.png" alt="logo">
+
+    </a>
+    smileatlRepo
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/smileatl/smileatlRepo" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    smileatl/smileatlRepo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Get started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Get started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../start_learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网站指引
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    关于网站
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    项目
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            项目
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    smileatlRepo
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            smileatlRepo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatlRepo/10.%E5%88%9D%E8%AF%86smileatlRepo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    初识smileatlRepo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Interview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Interview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/10.cpp" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cpp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/15.cpp%E5%85%B3%E9%94%AE%E5%AD%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cpp关键字
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/20.cpp_stl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cpp_stl
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/30.cpp%E6%96%B0%E7%89%B9%E6%80%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cpp新特性
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/40.cpp%E5%85%B6%E4%BB%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cpp其他
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/45.gcc_g%2B%2B_gdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gcc_g++_gdb
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/50.Linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/60.%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    操作系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/70.%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%BD%91%E7%BB%9C%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    操作系统-网络系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/80.%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    操作系统-内存管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/85.%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%A4%9A%E7%BA%BF%E7%A8%8B_%E5%A4%9A%E8%BF%9B%E7%A8%8B_%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    操作系统-多线程_多进程_线程池
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/90.%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/100.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据结构与算法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/110.MySQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MySQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/115.Redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/130.%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    设计模式
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/140.%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    系统设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/150.%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    工具
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/190.%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    技术支持
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MyWork/smileatl_interview/200.HR%E9%9D%A2%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HR面相关问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    工作
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            工作
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    编程语言
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    C
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1_1" id="__nav_4_1_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    myC
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            myC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../C/myC/10.myC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    myC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../C/myC/20.gcc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gcc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../C/myC/50.%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安装
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1_2" id="__nav_4_1_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Book
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Book
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../C/Book/C%E8%AF%AD%E8%A8%80%E6%B7%B1%E5%BA%A6%E8%A7%A3%E5%89%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C语言深度解剖
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1_3" id="__nav_4_1_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lesson
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Lesson
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../C/Lesson/%E7%BF%81%E6%81%BAC%E8%AF%AD%E8%A8%80/C_wengkai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    翁恺C语言
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cpp
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Cpp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2_1" id="__nav_4_1_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    myCpp
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            myCpp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Cpp/myCpp/10.myCpp.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    myCpp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Cpp/myCpp/20.STL.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2_2" id="__nav_4_1_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lesson
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lesson
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Cpp/myCpp/02.Cpp基础入门.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cpp基础入门
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Cpp/myCpp/03.Cpp核心编程.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cpp核心编程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Cpp/myCpp/04.Cpp提高编程.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cpp提高编程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3" id="__nav_4_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Go
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Go
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3_1" id="__nav_4_1_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    myGo
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            myGo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Go/1.%E5%88%9D%E8%AF%86Go%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    初识Go语言
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_4" id="__nav_4_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_4_1" id="__nav_4_1_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    myPython
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            myPython
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/myPython/Python基础.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_5" id="__nav_4_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Script_Language
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Script_Language
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Script_Language/10.shell%E8%84%9A%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    shell脚本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Script_Language/20.slurm%E5%92%8Csbatch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    slurm和sbatch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_6" id="__nav_4_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    YML
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            YML
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../YML/yml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    YML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机知识
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算机知识
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    linux系统基础
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    linux系统基础
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      入门知识
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="入门知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件或目录颜色一般情况
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令参数前的横杠-
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ubuntu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令解析器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      终端
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令和路径补齐
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      主键盘快捷键
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      目录结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="目录结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unix" class="md-nav__link">
+    <span class="md-ellipsis">
+      类unix系统目录结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      主要目录介绍(/)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="主要目录介绍(/)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      dev
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      etc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#home" class="md-nav__link">
+    <span class="md-ellipsis">
+      home
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      lib
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mnt" class="md-nav__link">
+    <span class="md-ellipsis">
+      mnt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#media" class="md-nav__link">
+    <span class="md-ellipsis">
+      media
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usr" class="md-nav__link">
+    <span class="md-ellipsis">
+      usr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bin" class="md-nav__link">
+    <span class="md-ellipsis">
+      bin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sbin" class="md-nav__link">
+    <span class="md-ellipsis">
+      sbin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      boot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lostfound" class="md-nav__link">
+    <span class="md-ellipsis">
+      lost+found
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proc" class="md-nav__link">
+    <span class="md-ellipsis">
+      proc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root" class="md-nav__link">
+    <span class="md-ellipsis">
+      root
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      run
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      绝对路径
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      相对路径
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#itcastitcast" class="md-nav__link">
+    <span class="md-ellipsis">
+      itcast@itcast:~$
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    操作系统
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            操作系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B/Linux%E7%B3%BB%E7%BB%9F%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux基础编程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux网络编程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    进程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E7%BA%BF%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/%E4%BF%A1%E5%8F%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信号
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3_1" id="__nav_4_2_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ICT技术
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            ICT技术
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/ICT%E6%8A%80%E6%9C%AF/%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    通信基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../计算机知识/计算机网络/ICT技术/交换机基础.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    交换机基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/ICT%E6%8A%80%E6%9C%AF/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    路由协议
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/ICT%E6%8A%80%E6%9C%AF/NAT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NAT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/ICT%E6%8A%80%E6%9C%AF/ACL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/ICT%E6%8A%80%E6%9C%AF/IPV6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IPV6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3_2" id="__nav_4_2_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    NetworkProgramming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            NetworkProgramming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/NetworkProgramming/%E5%8D%8F%E8%AE%AE/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    http
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/NetworkProgramming/%E5%8D%8F%E8%AE%AE/http%E8%A1%A5%E5%85%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    http补充问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/NetworkProgramming/%E5%8D%8F%E8%AE%AE/websocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    websocket
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/NetworkProgramming/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络编程常见概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_4" id="__nav_4_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据结构与算法
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            数据结构与算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../计算机知识/数据结构与算法/数据结构与算法基础.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据结构与算法基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_4_2" id="__nav_4_2_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    青大王卓
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            青大王卓
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%9D%92%E5%A4%A7%E7%8E%8B%E5%8D%93/10.%E7%BA%BF%E6%80%A7%E8%A1%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%9D%92%E5%A4%A7%E7%8E%8B%E5%8D%93/20.%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    栈和队列
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%9D%92%E5%A4%A7%E7%8E%8B%E5%8D%93/30.%E4%BA%8C%E5%8F%89%E6%A0%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    二叉树
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%9D%92%E5%A4%A7%E7%8E%8B%E5%8D%93/40.%E5%9B%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    图
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%9D%92%E5%A4%A7%E7%8E%8B%E5%8D%93/50.%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查找算法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%9D%92%E5%A4%A7%E7%8E%8B%E5%8D%93/60.%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    排序算法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    工具
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            工具
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/Git/01.Git%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git使用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/Git/05.Git%E8%A1%A5%E5%85%85%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git补充问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/Git/10.tortoiseGit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    tortoiseGt
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Markdown
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Markdown
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/Markdown/markdown/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    markdown
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/Markdown/markdown常见问题.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    markdown常见问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_3" id="__nav_4_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Obsidian
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Obsidian
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/Obsidian/obsidian/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    obsidian
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_4" id="__nav_4_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SSH
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            SSH
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/SSH/SSH/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_5" id="__nav_4_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vim
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Vim
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/Vim/vim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/Vim/vim_%E9%BB%91%E9%A9%AC%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vim_黑马
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_6" id="__nav_4_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    VisioStudio
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            VisioStudio
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/VisioStudio/VisioStudio.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VisioStudio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_7" id="__nav_4_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    VMware
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            VMware
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/VMware/VMware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VMware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_8" id="__nav_4_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vscode
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Vscode
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/Vscode/Vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vscode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    其他
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            其他
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_1" id="__nav_4_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    刷题
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            刷题
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/02.Leetcode-%E6%95%B0%E7%BB%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数组
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/04.Leetcode-%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    字符串
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/06.Leetcode-%E9%93%BE%E8%A1%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    链表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/08.Leetcode-%E5%93%88%E5%B8%8C%E8%A1%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    哈希表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/10.Leetcode-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    栈与队列
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../刷题/12.Leetcode-树.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/14.Leetcode-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    贪心算法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/15.Leetcode-%E9%80%92%E5%BD%92/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    递归
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/16.Leetcode-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    回溯算法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/18.Leetcode-%E5%88%86%E6%B2%BB%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分治法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/20.Leetcode-%E6%90%9C%E7%B4%A2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    搜索
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/22.Leetcode-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    动态规划
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/24.Leetcode-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    二分查找
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/26.Leetcode-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    排序算法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/28.Leetcode-%E5%8F%8C%E6%8C%87%E9%92%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    双指针
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/30.Leetcode-%E6%95%B0%E5%AD%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%88%B7%E9%A2%98/32.Leetcode-%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    其他算法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../刷题/50.Leetcode-剑指offer.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    剑指offer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../刷题/60.Leetcode-ACM模式输入输出.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACM模式输入输出
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../刷题/70.Leetcode-排序算法详解.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    排序算法详解
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../刷题/80.Leetcode-面试高频题-自己输入输出.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    面试高频题-自己输入输出
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../刷题/150.Leetcode-复刷还是没记住的题.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    复刷还是没记住的题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    学习
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            学习
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Postgraduate
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Postgraduate
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%AD%A6%E4%B9%A0/Postgraduate/00.publications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    publications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%AD%A6%E4%B9%A0/Postgraduate/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9F%A5%E8%AF%86%E7%82%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    机器学习知识点
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%AD%A6%E4%B9%A0/Postgraduate/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Python%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/Python%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python深度学习
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    阅读
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            阅读
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%AD%A6%E4%B9%A0/%E9%98%85%E8%AF%BB/%E4%B9%A6%E6%91%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    个人摘抄
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    收藏
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            收藏
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%94%B6%E8%97%8F/05.%E4%B8%AA%E4%BA%BA%E6%94%B6%E8%97%8F%E5%A4%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    个人收藏夹
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%94%B6%E8%97%8F/10.%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    资源下载
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    生活随笔
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            生活随笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E9%9A%8F%E7%AC%94/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E5%88%9D%E8%AF%86%E7%94%9F%E6%B4%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    初识生活
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    科技随笔
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            科技随笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E9%9A%8F%E7%AC%94/%E7%A7%91%E6%8A%80%E9%9A%8F%E7%AC%94/%E5%88%9D%E8%AF%86%E7%A7%91%E6%8A%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    初识科技
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../message/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    留言
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      入门知识
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="入门知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件或目录颜色一般情况
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令参数前的横杠-
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ubuntu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令解析器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      终端
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令和路径补齐
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      主键盘快捷键
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      目录结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="目录结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unix" class="md-nav__link">
+    <span class="md-ellipsis">
+      类unix系统目录结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      主要目录介绍(/)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="主要目录介绍(/)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      dev
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      etc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#home" class="md-nav__link">
+    <span class="md-ellipsis">
+      home
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      lib
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mnt" class="md-nav__link">
+    <span class="md-ellipsis">
+      mnt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#media" class="md-nav__link">
+    <span class="md-ellipsis">
+      media
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usr" class="md-nav__link">
+    <span class="md-ellipsis">
+      usr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bin" class="md-nav__link">
+    <span class="md-ellipsis">
+      bin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sbin" class="md-nav__link">
+    <span class="md-ellipsis">
+      sbin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      boot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lostfound" class="md-nav__link">
+    <span class="md-ellipsis">
+      lost+found
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proc" class="md-nav__link">
+    <span class="md-ellipsis">
+      proc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root" class="md-nav__link">
+    <span class="md-ellipsis">
+      root
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      run
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      绝对路径
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      相对路径
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#itcastitcast" class="md-nav__link">
+    <span class="md-ellipsis">
+      itcast@itcast:~$
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/smileatl/smileatlRepo/edit/master/docs/计算机知识/Linux/linux系统基础.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/smileatl/smileatlRepo/raw/master/docs/计算机知识/Linux/linux系统基础.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="linu">linu系统基础<a class="headerlink" href="#linu" title="Permanent link">&para;</a></h1>
+<h2 id="_1">入门知识<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">文件或目录颜色一般情况<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><img alt="文件或目录颜色 一般情况" src="../assets/filecolor.png" /></p>
+<h3 id="-">命令参数前的横杠-<a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
+<p><img alt="命令参数前的 -" src="../assets/cmdparameter.png" /></p>
+<h3 id="ubuntu">Ubuntu<a class="headerlink" href="#ubuntu" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="c1"># 切换到超级用户</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span>sudo<span class="w"> </span>su
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="c1"># 退出超级用户</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nb">exit</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="c1">#普通用户使用超级用户权限执行命令</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span>sudo<span class="w"> </span>+<span class="w"> </span>命令
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span>sudo<span class="w"> </span>mv<span class="w"> </span>aa<span class="w"> </span>bb
+</code></pre></div>
+<h3 id="_3">命令解析器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>对用户输入的命令进行解析，调用对应的执行程序</p>
+<ul>
+<li>shell：Bourne Shell（/bin/sh）</li>
+<li>bash：Bourne Again Shell(/bin/bash)   <mark>最常用</mark></li>
+<li>C Shell（/usr/bin/csh）</li>
+<li>......</li>
+</ul>
+<h3 id="_4">终端<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><img alt="s1683721749030" src="../assets/1683721749030.png" /></p>
+<h3 id="_5">命令和路径补齐<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>在虚拟终端下
+使用 tab 键</p>
+<ul>
+<li>补齐命令</li>
+<li>补齐目录</li>
+<li>提高效率，降低出错率</li>
+</ul>
+<h3 id="_6">主键盘快捷键<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>光标移动的位置
+  1. 向上↑： ctrl+p (previous)
+ 2. 向下↓： ctrl+n (next)
+ 3. 向左←：ctrl+b (backward)
+ 4. 右→：ctrl+f (forward)
+ 5. 移动到行首: ctrl + a
+6. 移动到行尾: ctrl + e
+ 7. 一个单词地移动：ctrl+左键，ctrl+右键</p>
+<p>删除字符</p>
+<ol>
+<li>删除光标后边的: ctrl + d<br />
+    ctrl d ：删除的是字符b<br />
+<img alt="s1683722145840" src="../assets/1683722145840.png" /></li>
+<li>删除光标前边的: Backspace
+    ctrl + h</li>
+<li>删除光标前的所有内容：ctrl + u</li>
+<li>删除光标后的所有内容：ctrl + k</li>
+</ol>
+<h2 id="_7">目录结构<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="unix">类unix系统目录结构<a class="headerlink" href="#unix" title="Permanent link">&para;</a></h3>
+<p><img alt="类unix系统目录结构" src="../assets/directorystructure.png" /></p>
+<h3 id="_8">主要目录介绍(/)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="dev">dev<a class="headerlink" href="#dev" title="Permanent link">&para;</a></h4>
+<p>设备目录（device的缩写）</p>
+<p>该目录下的所有文件称之为设备文件</p>
+<p>Linux下所见皆文件 &rarr; linux 下看到的所有的东西都被虚拟成文件</p>
+<ul>
+<li>cup，内存，显卡，声卡，网卡</li>
+<li>鼠标，键盘</li>
+<li>。。。</li>
+</ul>
+<p>举例：查看鼠标设备（mice）</p>
+<ul>
+<li>cd /dev/input</li>
+<li>sudo cat mice (管理员权限查看)</li>
+<li>鼠标移动会有命令行输出，数据会以二进制方式写入文件中，</li>
+</ul>
+<p>以ASCII码形式展示到屏幕上（乱码）</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>- 乱码：数据的存储和数据读取的方式不一致导致的。
+</code></pre></div>
+<h4 id="etc">etc<a class="headerlink" href="#etc" title="Permanent link">&para;</a></h4>
+<p>包含了当前操作系统用户所有配置的相关信息</p>
+<ul>
+<li>ftp、nfs服务器搭建涉及的一个目录</li>
+<li>系统软件的启动和配置文件</li>
+<li>系统在启动过程中需要读取的文件</li>
+<li>用户登录时的用户名、密码也存储在该目录下</li>
+<li>查看：vi /etc/passwd</li>
+</ul>
+<h4 id="home">home<a class="headerlink" href="#home" title="Permanent link">&para;</a></h4>
+<p>当前操作系统所安装的用户的主目录</p>
+<p>家目录(宿主目录、用户主目录)</p>
+<ul>
+<li>
+<ol>
+<li>/home/itcast(当前用户)/</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>cd /home/itcast == cd ~== <mark>cd 空</mark></li>
+</ol>
+</li>
+</ul>
+<h4 id="lib">lib<a class="headerlink" href="#lib" title="Permanent link">&para;</a></h4>
+<p>操作系统使用的库文件已经相关的配置都放在此目录下</p>
+<ul>
+<li>标准C库：/lib/i386-linux-gnu/libc.so.6</li>
+<li>i386-linux-gnu根据系统不同目录名字会有差异</li>
+</ul>
+<p>lib &rarr; library</p>
+<h4 id="mnt">mnt<a class="headerlink" href="#mnt" title="Permanent link">&para;</a></h4>
+<p>手动挂载的目录</p>
+<h4 id="media">media<a class="headerlink" href="#media" title="Permanent link">&para;</a></h4>
+<p>系统自动挂载目录</p>
+<h4 id="usr">usr<a class="headerlink" href="#usr" title="Permanent link">&para;</a></h4>
+<p>unix软件资源包管理目录，存放的是当前用户下的一些东西</p>
+<p>usr &rarr; unix software resource</p>
+<ul>
+<li>games 游戏</li>
+<li>include 头文件</li>
+<li>lib 应用程序库文件</li>
+</ul>
+<h4 id="bin">bin<a class="headerlink" href="#bin" title="Permanent link">&para;</a></h4>
+<p>Linux操作系统下可执行的系统级的二进制命令</p>
+<p>shell解析输入的命令时，会进入到该目录执行对应的二进制命令</p>
+<ul>
+<li>如：./date</li>
+</ul>
+<p>binary 的缩写</p>
+<h4 id="sbin">sbin<a class="headerlink" href="#sbin" title="Permanent link">&para;</a></h4>
+<p>超级用户需要用到的一些二进制命令存储在该目录</p>
+<p>sbin &rarr; super binary</p>
+<h4 id="boot">boot<a class="headerlink" href="#boot" title="Permanent link">&para;</a></h4>
+<p>系统开机时需要加载的一些文件和配置</p>
+<p>初学者不要碰该目录下的文件</p>
+<h4 id="lostfound">lost+found<a class="headerlink" href="#lostfound" title="Permanent link">&para;</a></h4>
+<p>存放系统错误产生的文件碎片，方便用户查找和恢复</p>
+<h4 id="proc">proc<a class="headerlink" href="#proc" title="Permanent link">&para;</a></h4>
+<p>内核提供的一个接口，主要用来存储系统统计信息</p>
+<h4 id="root">root<a class="headerlink" href="#root" title="Permanent link">&para;</a></h4>
+<p>root用户的家目录（宿主目录）</p>
+<p>ubuntu用户切换到root用户：sudo su</p>
+<h4 id="run">run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h4>
+<p>存放系统运行时需要的一些文件</p>
+<p>用户目录</p>
+<p>/home/lsl</p>
+<h3 id="_9">绝对路径<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>从根目录开始描述的路径，也就是从 / 开始</p>
+<p>： 与 $ 直接的部分 &rarr; 当前shell进程所在的工作目录位置</p>
+<h3 id="_10">相对路径<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>从当前位置开始描述的路径</p>
+<p>. 表示当前目录</p>
+<p>.. 表示当前目录的上一级目录</p>
+<p>-两个临近目录直接进行切换  cd -</p>
+<h3 id="itcastitcast">itcast@itcast:~$<a class="headerlink" href="#itcastitcast" title="Permanent link">&para;</a></h3>
+<ol>
+<li>第一个itcast：当前登录的用户</li>
+<li>@：英文at，在的意思</li>
+<li>第二个itcast：主机名</li>
+<li>~：当前工作目录的位置，宿主目录</li>
+<li>$：表示当前登录的用户为普通用户</li>
+<li>
+<h1 id="root-itcastitcast">：表示root用户   itcast@itcast:~<a class="headerlink" href="#root-itcastitcast" title="Permanent link">&para;</a></h1>
+</li>
+</ol>
+<h2 id="_11">文件与文件夹<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h3 id="ls-l">ls -l<a class="headerlink" href="#ls-l" title="Permanent link">&para;</a></h3>
+<p><img alt="s1_ls -l" src="../assets/1_ls%20-l.png" /></p>
+<h3 id="rm">rm<a class="headerlink" href="#rm" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">#删除文件</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>rm<span class="w"> </span>文件
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">#删除文件夹</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>rm<span class="w"> </span>-r<span class="w"> </span>文件夹
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1">#强制删除不询问</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>rm<span class="w"> </span>-rf<span class="w"> </span>文件/文件夹
+</code></pre></div>
+<h3 id="whichwhereis">which和whereis<a class="headerlink" href="#whichwhereis" title="Permanent link">&para;</a></h3>
+<p>都是linux操作系统下查找可执行文件路径的命令</p>
+<p><strong>which</strong></p>
+<p>查找系统<code>PATH</code>路径下的可执行文件。就是查找已经安装好的可以直接执行的命令</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>which<span class="w"> </span>ls
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>/bin/ls
+</code></pre></div>
+<p>which查找的可执行文件，必须是<code>PATH</code>下的可执行文件，而不能是没有加入<code>PATH</code>的可执行文件。即使是可以行的文件，但是没有加入到系统搜索路径中给你，它仍然无法被which发现</p>
+<p><strong>whereis</strong></p>
+<p>查找二进制（命令）、源文件、man文件。与which不同的是这条命令可以是通过文件索引数据库而非PATH来查找的，所以查找的面比which要广</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>whereis<span class="w"> </span>ls
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>ls:<span class="w"> </span>/bin/ls
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>/usr/share/man/man1/ls.1.gz
+</code></pre></div>
+<p>可以看到，whereis不仅找到了ls可执行文件的位置，还找到了其<code>man</code>帮助文件，可见其搜索范围比较广，不局限于PATH</p>
+<h3 id="_12">权限管理<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>chown
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>将指定文件的拥有者改为指定的用户或组<span class="w"> </span>--<span class="w"> </span>change<span class="w"> </span>owner
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span>用法
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span>chown<span class="w"> </span>+<span class="w"> </span>文件所属用户<span class="w"> </span>+<span class="w"> </span>文件或目录名
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">            </span>sudo<span class="w"> </span>chown<span class="w"> </span>nobody<span class="w"> </span>text.txt
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span>chown<span class="w"> </span>+<span class="w"> </span>文件所属用户：文件所属组<span class="w"> </span>+<span class="w"> </span>文件或目录名
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">            </span>sudo<span class="w"> </span>chown<span class="w"> </span>nobody：nogroup<span class="w"> </span>text.txt
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>chgrp
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span>改变文件或目录的所属群组
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span>用法
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span>chgrp<span class="w"> </span>+<span class="w"> </span>用户组<span class="w"> </span>+<span class="w"> </span>文件或目录名
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span>sudo<span class="w"> </span>chgrp<span class="w"> </span>nogroup<span class="w"> </span>text.txt
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>这两个命令需要超级用户权限才能执行
+</code></pre></div>
+<h3 id="_13">共享文件夹<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>1、在vmware中启用共享文件夹</p>
+<p>2、查看共享文件夹是否设置成功</p>
+<p>vmware-hgfsclient</p>
+<p><img alt="s1685869647010" src="../assets/1685869647010.png" /></p>
+<p>3、挂在共享文件夹到/mnt目录下</p>
+<p>sudo vmhgfs-fuse .host:/ /mnt -o nonempty -o allow_other</p>
+<p><img alt="s1685869652067" src="../assets/1685869652067.png" /></p>
+<h3 id="_14">给文件/文件夹创建桌面快捷方式<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>将文件夹建立软链接到桌面</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ln<span class="w"> </span>-s<span class="w"> </span>‘/home/lsl/Downloads’<span class="w"> </span>~/桌面
+</code></pre></div>
+<p>以创建一个名为 <code>python</code> 的符号链接，指向 <code>python3</code>，从而方便地使用 <code>python</code> 命令来调用 Python 3 解释器。以下是创建这样一个链接的命令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/usr/bin/python3<span class="w"> </span>/usr/local/bin/python
+</code></pre></div>
+<h2 id="_15">压缩包管理<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h3 id="_16">打包<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h4 id="tar">tar<a class="headerlink" href="#tar" title="Permanent link">&para;</a></h4>
+<ul>
+<li>该命令可以只打包不压缩</li>
+<li>通过添加参数，来完成文件的压缩和解压</li>
+<li>参数<ol>
+<li>z -&gt; 用 gzip 来压缩/解压缩文件</li>
+<li>j -&gt; 用 bzip2 来压缩/解压缩文件      （1,2）互斥     </li>
+<li>c -&gt; create，创建新的压缩文件。如果用户想备份一个目录或是一些文件，就要选择这个选项。</li>
+<li>x -&gt; 从压缩文件中释放文件              （3,4）互斥</li>
+<li>v -&gt; 详细报告tar处理的文件信息</li>
+<li>f -&gt; 指定压缩文件的名字</li>
+</ol>
+</li>
+<li>压缩<ul>
+<li>tar + 参数（zcvf） + 压缩包名字.tar.gz + 原材料（要打包压缩的文件或目录）</li>
+<li>tar + 参数（jcvf） + 压缩包名字.tar.bz2 + 原材料（要打包压缩的文件或目录）</li>
+</ul>
+</li>
+<li>解压缩<ul>
+<li>tar + 参数（zxvf） + 已有的压缩包（test.tar.gz）</li>
+<li>tar + 参数（jxvf） + 已有的压缩包（test.tar.bz2）</li>
+<li>指定解压目录：添加参数 -C（大写）</li>
+<li>tar zxvf test.tar.gz -C + 解压目录（./mytest）    </li>
+</ul>
+</li>
+</ul>
+<h3 id="_17">压缩<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="gz">.gz 格式<a class="headerlink" href="#gz" title="Permanent link">&para;</a></h4>
+<ul>
+<li>使用 gzip 命令压缩 </li>
+<li>压缩过程中不保留源文件</li>
+<li>不能对目录进行压缩</li>
+<li>不能对多个文件进行打包压缩</li>
+<li>解压缩：gunzip 命令</li>
+</ul>
+<h4 id="bz2">.bz2 格式<a class="headerlink" href="#bz2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>使用 bzip2 命令压缩</li>
+<li>通过使用参数 -k(keep) 保留源文件</li>
+<li>不能对目录进行压缩</li>
+<li>不能对多个文件进行打包压缩</li>
+<li>解压缩：bunzip2 命令</li>
+</ul>
+<p><mark>弊病：</mark>不能对多个文件进行打包压缩，不能对目录进行压缩</p>
+<h3 id="rar">rar<a class="headerlink" href="#rar" title="Permanent link">&para;</a></h3>
+<ul>
+<li>使用前需要安装 rar 工具</li>
+<li>sudo apt-get install rar</li>
+<li>用法：</li>
+<li>rar \&lt;命令&gt; -\&lt;选项1&gt; ….-\&lt;选项N&gt; \&lt;操作文档&gt; \&lt;文件…&gt; \&lt;@文件列表…&gt; \&lt;解压路径&gt;<ul>
+<li>命令</li>
+<li>a -&gt; 添加文件到操作文档</li>
+<li>x -&gt; 带路径解压文档中内容到当前目录</li>
+<li>选项</li>
+<li>r -&gt; 递归子目录</li>
+</ul>
+</li>
+<li>打包：</li>
+<li>rar a -r + 压缩文件名（newdir） + 压缩的目录（./mydir）</li>
+<li>打包的生成的新文件不需要指定后缀</li>
+<li>解包：</li>
+<li>rar x newdir.rar</li>
+<li>解压到指定目录<ul>
+<li>rar x all.rar + 目录（/home/itcast/test）</li>
+</ul>
+</li>
+</ul>
+<h3 id="zip">zip<a class="headerlink" href="#zip" title="Permanent link">&para;</a></h3>
+<ul>
+<li>打包：</li>
+<li>对目录打包需要添加参数： -r</li>
+<li>zip -r + 打包之后的文件名（dir.zip） + （打包的目录）dir</li>
+<li>解包：</li>
+<li>unzip dir.zip</li>
+<li>解压到指定目录：<ul>
+<li>使用参数 -d 来指定目录</li>
+<li>unzip dir.zip -d /home/itcast/test</li>
+</ul>
+</li>
+</ul>
+<p>命令 [参数] 压缩文件名 压缩的文件和目录</p>
+<h2 id="_18">进程管理<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<p>tty：终端设备的统称。</p>
+<p>tty一词源于Teletypes，或者teletypewriters，原来指的是电传打字机，是通过串行线用打印机键盘通过阅读和发送信息的东西，后来这东西被键盘与显示器取代，所以现在叫终端比较合适。终端是一种<a href="https://so.csdn.net/so/search?q=字符型&amp;spm=1001.2101.3001.7020">字符型</a>设备，它有多种类型，通常使用tty来简称各种类型的终端设备。</p>
+<p>tty1～6是文本型控制台，tty7是X Window图形显示管理器。</p>
+<p>在本地机器上可以通过Ctrl+Alt+F1（F1-F7键）切换到对应的登录控制台。</p>
+<h3 id="who">who<a class="headerlink" href="#who" title="Permanent link">&para;</a></h3>
+<p>查看当前在线用户的情况</p>
+<ul>
+<li>登录的用户名</li>
+<li>使用的设备终端（pts）</li>
+<li>登录到系统的时间</li>
+</ul>
+<p>tty 设备</p>
+<ul>
+<li>tty1 - tty6 表示文字界面</li>
+<li>ctrl + alt + [F1-F6]</li>
+<li>tty7 图形界面</li>
+<li>ctrl +　alt + F7</li>
+</ul>
+<h3 id="ps">ps<a class="headerlink" href="#ps" title="Permanent link">&para;</a></h3>
+<p>查看整个系统内部所运行的进程状况</p>
+<p>涉及的参数</p>
+<ul>
+<li>a：（all）当前系统所有用户的进程</li>
+<li>u：查看进程所有者及其他一些信息</li>
+<li>x：显示没有控制终端的进程 -- 不能与用户进行交互的进程【输入、输出】</li>
+</ul>
+<p>显示当前用户下所有进程</p>
+<ul>
+<li>ps aux</li>
+</ul>
+<p>对显示的进程过滤</p>
+<ul>
+<li>ps aux | grep xxx</li>
+<li>什么是管道（|）<ul>
+<li>指令1的输出作为指令2的输入</li>
+<li>指令2处理完毕，将信息输出到屏幕</li>
+</ul>
+</li>
+<li>grep查询是需要占用一个进程的，所有结果 &gt; 2 才能说明查询结果存在</li>
+<li>如果结果有一条，表示没有查询的进程</li>
+<li>查询结果中PID表示进程ID</li>
+</ul>
+<h3 id="top">top<a class="headerlink" href="#top" title="Permanent link">&para;</a></h3>
+<p>相当于windows下的任务管理器</p>
+<ul>
+<li>文字版</li>
+<li>不能翻页</li>
+</ul>
+<p>top命令可以实时动态地查看系统的整体运行情况，是一个综合了多方信息监测系统性能和运行信息的实用工具，TOP命令是Linux下常用的性能分析工具，<strong>能够实时显示系统中各个进程的资源占用状况</strong>，有点像window系统的任务管理器</p>
+<p>param为：</p>
+<ul>
+<li>-b：以批处理模式操作；</li>
+<li>-c：显示完整的治命令；</li>
+<li>-d：屏幕刷新间隔时间；</li>
+<li>-I：忽略失效过程；</li>
+<li>-s：保密模式；</li>
+<li>-S：累积模式；</li>
+<li>-u [用户名]：指定用户名；</li>
+<li>-p [进程号]：指定进程；</li>
+<li>-n [次数]：循环显示的次数。</li>
+<li>-H：查看进程下面的子线程</li>
+</ul>
+<p><img alt="img" src="../resource/img/f4f89f0dc6704d28db1fb2d7c8f31c68.png" /></p>
+<h3 id="squeue">squeue<a class="headerlink" href="#squeue" title="Permanent link">&para;</a></h3>
+<p>查看slurm调度器中的任务队列</p>
+<p>squeue -a | grep lsl7270 -c</p>
+<p>查看计算队列中的进程</p>
+<h3 id="kill">kill<a class="headerlink" href="#kill" title="Permanent link">&para;</a></h3>
+<p>用来终止指定的进程（terminate a process）的运行</p>
+<p>查看信号编号</p>
+<ul>
+<li>kill -l</li>
+</ul>
+<p>杀死进程</p>
+<ul>
+<li>kill -SIGKILL 89899【PID-进程标识号】</li>
+<li>向当前进程发送了9号信号（SIGKILL）</li>
+</ul>
+<h3 id="pkill">pkill<a class="headerlink" href="#pkill" title="Permanent link">&para;</a></h3>
+<p>杀死指定用户的指定进程名的进程</p>
+<p>pkill -9 -u lsl7270 python  </p>
+<h3 id="_19">结束、停止、杀死进程的区别<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>停止进程就是挂起</p>
+<p>结束进程是要等程序响应的，正常终止</p>
+<p>kill进程不会等程序响应（有点异常终止，有问题还是会询问一下），kill -9是无条件终止信号</p>
+<h3 id="env">env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
+<p>查看当前进程环境变量</p>
+<p>环境变量</p>
+<ul>
+<li>当前系统下用户的配置路径信息</li>
+<li>格式为键值对：key=value：value  （多个值之间用 ： 分隔）</li>
+<li>PATH：该环境变量中记录着shell命令解析器去查找命令的目录位置，从前往后的顺序查找</li>
+<li>LANG: 语言以及字符集</li>
+</ul>
+<h2 id="_20">网络管理<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<h3 id="ifconfig">ifconfig<a class="headerlink" href="#ifconfig" title="Permanent link">&para;</a></h3>
+<p>获取网络接口配置信息，还可以修改这些配置。</p>
+<p>获取网络接口信息</p>
+<p>ping</p>
+<p>测试与目标主机的连通性</p>
+<p>命令格式</p>
+<ul>
+<li>ping [参数] [主机名或IP地址]</li>
+</ul>
+<p>参数</p>
+<ul>
+<li>-c 数目：在发送指定数目的包后停止。</li>
+<li>-i 秒数：设定间隔几秒送一个网络封包给一台机器，预设值是一秒送一次</li>
+</ul>
+<h3 id="nslookup">nslookup<a class="headerlink" href="#nslookup" title="Permanent link">&para;</a></h3>
+<p>查看服务器域名对应的IP地址</p>
+<p>一般访问网站都是使用域名，如：www.baidu.com，使用该命令就可查看百度所有服务器的IP地址</p>
+<h2 id="_21">用户管理<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<h3 id="_22">创建用户<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>（1）sudo adduser + 用户名（luffy），adduser会自动在/home目录下创建同名文件夹  </p>
+<p>默认情况下：</p>
+<p>adduser在创建用户时会主动调用 /etc/adduser.conf；</p>
+<p>在创建用户主目录时默认在/home下，而且创建为 /home/用户名 </p>
+<p>如果主目录已经存在，就不再创建，但是此主目录虽然作为新用户的主目录，而且默认登录时会进入这个目录下，但是这个目录并不是属于新用户，当使用userdel删除新用户时，并不会删除这个主目录，因为这个主目录在创建前已经存在且并不属于这个用户。</p>
+<p>为用户指定shell版本为：/bin/bash</p>
+<p>（2）sudo useradd -s /bin/bash -g itcast -d /home/itcast -m itcast，<br />
+useradd创建了一个用户名，没有在/home/目录下创建同名文件夹，也没有创建密码，需要sudo passwd itcast</p>
+<ul>
+<li>-s 指定新用户登陆时shell类型</li>
+<li>-g 指定所属组，该组必须已经存在</li>
+<li>-d 用户家目录</li>
+<li>-m 用户家目录不存在时，自动创建该目录</li>
+</ul>
+<p>设置用户组</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo groupadd itcast
+</code></pre></div>
+<p>（3）之后如果想修改用户密码，都可以使用sudo passwd username来实现</p>
+<h3 id="_23">删除用户<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>sudo deluser + \&lt;username&gt;，自动把用户的主目录一起删除</p>
+<p>sudo delusr –remove-home \&lt;username&gt;，要删除的用于及其主目录和邮件假脱机，可以运行该命令</p>
+<p>sudo userdel -r itcast</p>
+<ul>
+<li>选项 -r 的作用是把用户的主目录一起删除</li>
+</ul>
+<h3 id="_24">切换用户<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>su + 用户名（sanji）</p>
+<h3 id="root_1">root用户<a class="headerlink" href="#root_1" title="Permanent link">&para;</a></h3>
+<p>sudo su</p>
+<h4 id="root_2">修改root密码<a class="headerlink" href="#root_2" title="Permanent link">&para;</a></h4>
+<p>1.第一步：执行如下命令，设置密码</p>
+<p>sudo passwd</p>
+<p>2.第二步：输入当前用户的密码</p>
+<p>3.第三步：输入root用户的密码</p>
+<p>4.第四步：再次输入root用户的密码</p>
+<p>5.第五步：执行以下命令，切换到root用户</p>
+<p>su root</p>
+<h3 id="_25">设置密码<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>sudo passwd + 用户名（luffy）</p>
+<p>sudo passwd root</p>
+<p>sudo passwd</p>
+<h3 id="_26">退出登录用户<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>exit</p>
+<h3 id="_27">获知用户身份<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>id<span class="w"> </span>username：输出用户ID，组ID和账户的组成员身份
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">UID</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>jacob<span class="o">)</span><span class="w"> </span><span class="nv">GID</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>jacob<span class="o">)</span><span class="w"> </span><span class="nv">groepen</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>jacob<span class="o">)</span>,4<span class="o">(</span>adm<span class="o">)</span>,24<span class="o">(</span>cdrom<span class="o">)</span>,27<span class="o">(</span>sudo<span class="o">)</span>,30
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>“<span class="w"> </span><span class="m">27</span>（sudo）”表示我是“<span class="w"> </span>sudo”组的成员，并且可以选择使用运行命令sudo，换句话说：我是管理员。
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>相比之下，“普通”用户的输出为：
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nv">UID</span><span class="o">=</span><span class="m">1001</span><span class="o">(</span>testpersoon<span class="o">)</span><span class="w"> </span><span class="nv">GID</span><span class="o">=</span><span class="m">1001</span><span class="o">(</span>testpersoon<span class="o">)</span><span class="w"> </span><span class="nv">groepen</span><span class="o">=</span><span class="m">1001</span><span class="o">(</span>testpersoon<span class="o">)</span>,1000<span class="o">(</span>jacob<span class="o">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>要将“普通”用户转变为管理员，将用户添加到组sudo中
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>sudo<span class="w"> </span>adduser<span class="w"> </span>&lt;username&gt;<span class="w"> </span>sudo<span class="w">  </span><span class="o">(</span>from<span class="w"> </span>an<span class="w"> </span>administrator<span class="err">&#39;</span>s<span class="w"> </span>user<span class="w"> </span>account<span class="o">)</span>
+</code></pre></div>
+<h3 id="sudo">授予用户sudo权限<a class="headerlink" href="#sudo" title="Permanent link">&para;</a></h3>
+<h4 id="sudoerssudo">方法一、将用户添加到sudoers文件中定义的sudo组中<a class="headerlink" href="#sudoerssudo" title="Permanent link">&para;</a></h4>
+<p>验证用户是否具有sudo访问权限：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>-l<span class="w"> </span>-U<span class="w"> </span>Senthil
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>User<span class="w"> </span>senthil<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>allowed<span class="w"> </span>to<span class="w"> </span>run<span class="w"> </span>sudo<span class="w"> </span>on<span class="w"> </span>ubuntu2204.
+</code></pre></div>
+<p>将用户添加到 sudo 组：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>Senthil
+</code></pre></div>
+<p>要验证用户是否已添加到 sudo 组中，请运行：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>-l<span class="w"> </span>-U<span class="w"> </span>Senthil
+</code></pre></div>
+<p><img alt="s168586s8870122" src="../assets/1685868870122.png" /></p>
+<p>在这里，“（全部：全部）全部”line 表示用户拥有无限权限，可以在系统上运行任何命令。在我们的例子中，“ senthil ”用户已被添加到sudo 用户组中。从现在开始，他可以执行各种管理任务。</p>
+<h4 id="sudoers">方法二、将用户添加到sudoers文件中（不推荐）<a class="headerlink" href="#sudoers" title="Permanent link">&para;</a></h4>
+<p><img alt="img" src="../resource/img/37cf3638a05220b1b17c51b47c8e7fb5.png" /></p>
+<h4 id="etcsudoersd">方法三、在/etc/sudoers.d目录中创建授权文件（推荐）<a class="headerlink" href="#etcsudoersd" title="Permanent link">&para;</a></h4>
+<p>通过在 /etc/sudoers.d 目录中创建具有授权规则的新文件来实现相同的操作，运行命令echo "\&lt;username&gt; ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/\&lt;username&gt;可以实现相同的效果，这种方法更易于维护，推荐使用</p>
+<p><img alt="s1685868891760" src="../assets/1685868891760.png" /></p>
+<p>（或者创建文件名为用户名的文件，在其中输入: lsl  ALL=(ALL:ALL)  ALL</p>
+<h4 id="sudoers_1">查看sudoers文件内容<a class="headerlink" href="#sudoers_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>cat<span class="w"> </span>/etc/sudoers
+</code></pre></div>
+<p><img alt="s1685868928951" src="../assets/1685868928951.png" /></p>
+<ul>
+<li>
+<p>第一个 ALL 是允许的用户。</p>
+</li>
+<li>
+<p>第二个 ALL 是主机。如果您将相同的“sudoers”文件分发给许多主机，用户可以在所有主机上执行管理命令。</p>
+</li>
+<li>
+<p>第三个是运行命令时的用户。</p>
+</li>
+<li>
+<p>最后一个是允许的命令。</p>
+</li>
+</ul>
+<h4 id="sudo_1">删除用户的sudo访问权限<a class="headerlink" href="#sudo_1" title="Permanent link">&para;</a></h4>
+<p>要撤销用户的 sudo 权限（例如 senthil），命令将是：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>deluser<span class="w"> </span>senthil<span class="w"> </span>sudo
+</code></pre></div>
+<p><img alt="s1685868949841" src="../assets/1685868949841.png" /></p>
+<p>或者，运行以下命令来撤销用户的 sudo 权限：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>gpasswd<span class="w"> </span>-d<span class="w"> </span>senthil<span class="w"> </span>sudo
+</code></pre></div>
+<h3 id="_28">更改文件夹所属用户/用户组<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>使用chown修改文件所属用户/用户组：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>chown<span class="w"> </span>-R<span class="w"> </span>username<span class="w"> </span>filedir
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>chown<span class="w"> </span><span class="o">[</span>-cfhvR<span class="o">]</span><span class="w"> </span><span class="o">[</span>--help<span class="o">]</span><span class="w"> </span><span class="o">[</span>--version<span class="o">]</span><span class="w"> </span>user<span class="o">[</span>:group<span class="o">]</span><span class="w"> </span>file...
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="m">1</span>.<span class="w">  </span>user<span class="w"> </span>:<span class="w"> </span>新的文件拥有者的使用者<span class="w"> </span>ID<span class="w"> </span>group<span class="w"> </span>:<span class="w"> </span>新的文件拥有者的使用者组<span class="o">(</span>group<span class="o">)</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="m">2</span>.<span class="w">  </span>-c<span class="w"> </span>:<span class="w"> </span>显示更改的部分的信息
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="m">3</span>.<span class="w">  </span>-f<span class="w"> </span>:<span class="w"> </span>忽略错误信息
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="m">4</span>.<span class="w">  </span>-h<span class="w"> </span>:修复符号链接
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="m">5</span>.<span class="w">  </span>-v<span class="w"> </span>:<span class="w"> </span>显示详细的处理信息
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="m">6</span>.<span class="w">  </span>-R<span class="w"> </span>:<span class="w"> </span>处理指定目录以及其子目录下的所有文件
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="m">7</span>.<span class="w">  </span>–help<span class="w"> </span>:<span class="w"> </span>显示辅助说明
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="m">8</span>.<span class="w">  </span>–version<span class="w"> </span>:<span class="w"> </span>显示版本
+</code></pre></div>
+<h2 id="_29">磁盘管理<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
+<p>磁盘命名</p>
+<p><img alt="s1683773094376" src="../assets/1683773094376.png" /></p>
+<h3 id="mount">挂载 mount<a class="headerlink" href="#mount" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>系统默认挂载目录：/media
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>手动挂载目录：/mnt
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>挂载方式：mount<span class="w"> </span>+<span class="w"> </span>设备名<span class="w"> </span>+<span class="w"> </span>挂载目录
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span>设备名
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">        </span>检测设备名称：<span class="w"> </span>sudo<span class="w"> </span>fdisk<span class="w"> </span>-l
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">        </span>磁盘命名规则
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">    </span>挂载目录
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">        </span>默认手动挂载到<span class="w">　</span>/mnt
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">        </span>挂载到/mnt以外的目录<span class="w"> </span>--<span class="w"> </span>挂载成功后会遮蔽掉目录中原来的东西，卸载设备之后才能看到目录中原来的数据
+</code></pre></div>
+<h3 id="umount">卸载 umount<a class="headerlink" href="#umount" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>卸载的时候，用户的当前位置一定不能再<span class="w"> </span>/mnt（/media）或者其子目录下，否则无法卸载
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo<span class="w"> </span>umount<span class="w"> </span>/mnt
+</code></pre></div>
+<h2 id="_30">远程连接<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
+<h3 id="nc">nc<a class="headerlink" href="#nc" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>nc<span class="w"> </span>localhost<span class="w"> </span><span class="m">9981</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1"># 在nc中，回车键通常被解释为换行字符（`\n`）</span>
+</code></pre></div>
+<h3 id="telnet">telnet<a class="headerlink" href="#telnet" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>telnet<span class="w"> </span>localhost<span class="w"> </span><span class="m">9981</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="c1"># 在telnet中，回车键通常被解释为回车和换行字符的组合（`\r\n`）</span>
+</code></pre></div>
+<h4 id="telnet_1">退出telnet<a class="headerlink" href="#telnet_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>ctrl + ]</li>
+<li>quit/exit</li>
+</ol>
+<h2 id="_31">查看、查找和检索<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
+<h3 id="_32">查看常用命令<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<p>linux命令中cat、more、less、tail、head均可用来查看文件内容，主要区有：</p>
+<p>cat是一次性显示整个文件的内容，适用于文件内容少的情况；</p>
+<p>more和less一般用于显示文件内容超过一屏的内容，并且提供翻页的功能。</p>
+<p>tail 和 head分别显示文件的后几行和前几行内容。常用于大文件的截取。</p>
+<h3 id="cat">cat<a class="headerlink" href="#cat" title="Permanent link">&para;</a></h3>
+<p>cat命令是整个文件的内容从上到下显示在屏幕上。还可以将多个文件连接起来显示，它常与重定向符号配合使用，适用于文件内容少的情况.</p>
+<p>-n 对文件进行顺序编号，即输出行号</p>
+<h3 id="more">more<a class="headerlink" href="#more" title="Permanent link">&para;</a></h3>
+<p>more命令会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能 。more命令从前向后读取文件，因此在启动时就加载整个文件。</p>
+<h3 id="less">less<a class="headerlink" href="#less" title="Permanent link">&para;</a></h3>
+<p>less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。</p>
+<p>在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多的搜索功能，不止可以向下搜，也可以向上搜。</p>
+<h3 id="find">find<a class="headerlink" href="#find" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>按文件名查询：-name
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span>find<span class="w"> </span>+<span class="w"> </span>路径<span class="w"> </span>+<span class="w"> </span>-name<span class="w"> </span>+<span class="w"> </span>文件名
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span>find<span class="w"> </span>/home<span class="w"> </span>-name<span class="w"> </span>a.txt
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>按文件大小查询：-size
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">    </span>find<span class="w"> </span>+<span class="w"> </span>路径<span class="w"> </span>+<span class="w"> </span>-size<span class="w"> </span>+<span class="w"> </span>范围
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">        </span>范围
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">            </span>大于：+表示<span class="w">  </span>--<span class="w"> </span>+100k
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">            </span>小于：-表示<span class="w">  </span>--<span class="w">  </span>-100k
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">            </span>等于:<span class="w"> </span>不需要添加符号<span class="w">  </span>--<span class="w"> </span>100k
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="w">        </span>大小
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="w">            </span>M<span class="w"> </span>必须大写
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="w">            </span>k<span class="w"> </span>必须小写
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="w">    </span>例子:
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="w">        </span>等于100k的文件:<span class="w"> </span>find<span class="w"> </span>~/<span class="w"> </span>-size<span class="w"> </span>100k
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="w">        </span>大于100k的文件:<span class="w"> </span>find<span class="w"> </span>~/<span class="w"> </span>-size<span class="w"> </span>+100k
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="w">        </span>大于50k,<span class="w"> </span>小于100k的文件:<span class="w"> </span>find<span class="w"> </span>~/<span class="w"> </span>-size<span class="w"> </span>+50k<span class="w"> </span>-size<span class="w"> </span>-100k
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>按文件类型查询：-type
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a><span class="w">    </span>find<span class="w"> </span>+<span class="w"> </span>路径<span class="w"> </span>+<span class="w"> </span>-type<span class="w"> </span>+<span class="w"> </span>类型
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a><span class="w">        </span>类型
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a><span class="w">                </span><span class="m">1</span>.<span class="w"> </span>普通文件类型用<span class="w"> </span>f<span class="w"> </span>表示而不是<span class="w"> </span>-
+<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a><span class="w">                </span><span class="m">2</span>.<span class="w"> </span>d<span class="w"> </span>-&gt;<span class="w"> </span>目录
+<a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a><span class="w">                </span><span class="m">3</span>.<span class="w"> </span>l<span class="w"> </span>-&gt;<span class="w"> </span>符号链接
+<a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a><span class="w">                </span><span class="m">4</span>.<span class="w"> </span>b<span class="w"> </span>-&gt;<span class="w"> </span>块设备文件
+<a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a><span class="w">                </span><span class="m">5</span>.<span class="w"> </span>c<span class="w"> </span>-&gt;<span class="w"> </span>字符设备文件
+<a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a><span class="w">                </span><span class="m">6</span>.<span class="w"> </span>s<span class="w"> </span>-&gt;<span class="w"> </span>socket文件，网络套接字
+<a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a><span class="w">                </span><span class="m">7</span>.<span class="w"> </span>p<span class="w"> </span>-&gt;<span class="w"> </span>管道
+<a id="__codelineno-21-29" name="__codelineno-21-29" href="#__codelineno-21-29"></a>
+<a id="__codelineno-21-30" name="__codelineno-21-30" href="#__codelineno-21-30"></a>使用通配符
+<a id="__codelineno-21-31" name="__codelineno-21-31" href="#__codelineno-21-31"></a><span class="w">    </span>*<span class="w"> </span>--<span class="w"> </span>通配<span class="w"> </span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span>n个字符
+<a id="__codelineno-21-32" name="__codelineno-21-32" href="#__codelineno-21-32"></a><span class="w">    </span>？--<span class="w"> </span>通配1个字符
+</code></pre></div>
+<p><strong>例子</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>find<span class="w"> </span>/path/to/directory<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*keyword*&quot;</span><span class="w"> </span>-print<span class="w">  </span><span class="c1"># 在指定目录下查找包含指定关键字的文件，并打印出来</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>find<span class="w"> </span>/path/to/directory<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*keyword*&quot;</span><span class="w"> </span>-exec<span class="w"> </span>rm<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="c1"># find /path/to/directory：find 命令用于在指定的目录中进行文件搜索。将 /path/to/directory 替换为你要搜索的目录路径。</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># -type f：这是 find 命令的选项之一，用于指定搜索的对象类型。f 表示只搜索普通文件，而不包括目录、链接等其他类型的文件。 -d是文件夹</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="c1"># -name &quot;*keyword*&quot;：这是 find 命令的另一个选项，用于指定要匹配的文件名模式。*keyword* 是一个通配符模式，可以匹配包含指定关键字的文件名。你可以根据需要修改关键字的值。</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="c1"># -exec rm {} \;：这是 find 命令的一个参数，用于在找到匹配的文件后执行指定的命令。在这个例子中，指定的命令是 rm {}，表示删除找到的文件。{} 是一个占位符，表示找到的文件名。\; 是用来告诉 find 命令 -exec 选项的结束，转义字符，用于将分号;作为普通字符处理，而不是作为命令分隔符。</span>
+</code></pre></div>
+<h3 id="grep">grep<a class="headerlink" href="#grep" title="Permanent link">&para;</a></h3>
+<ol>
+<li>grep是独立命令</li>
+<li><code>|</code> 是管道命令</li>
+<li><code>|</code> grep就是指把上个命令运行的结果通过管道命令带入到grep的参数里执行</li>
+<li>所以单纯的grep没什么意义，一般使用都是通过管道符来使用grep</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>在一个具体的文件中查找：
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>grep<span class="w"> </span><span class="s2">&quot;main&quot;</span><span class="w"> </span>test.c
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>递归查找目录及子目录的内容：
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>-r<span class="w"> </span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>grep<span class="w"> </span>-r<span class="w"> </span>+<span class="w"> </span>“查找的关键字”<span class="w"> </span>+<span class="w"> </span>路径
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>grep<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;main void&quot;</span><span class="w"> </span>/home/itcast
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>-c<span class="w"> </span>计数
+</code></pre></div>
+<h3 id="tail">tail<a class="headerlink" href="#tail" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>tail<span class="w"> </span>-n<span class="w"> </span>access.log<span class="w"> </span><span class="c1"># 输出倒数n行</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>tail<span class="w"> </span>-f<span class="w"> </span><span class="c1"># 会是阻塞状态，有新日志输出的时候，就会实时显示出来</span>
+</code></pre></div>
+<h2 id="_33">软件安装<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
+<h3 id="_34">在线安装<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>apt-get
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span>安装：sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>tree<span class="w"> </span>--<span class="w"> </span>在线下载安装
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">    </span>移除：sudo<span class="w"> </span>apt-get<span class="w"> </span>remove<span class="w"> </span>tree
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">    </span>更新：sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>--<span class="w"> </span>更新软件列表
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">    </span>清理所有软件安装包:<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>clean
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">        </span>实际清理的是:<span class="w"> </span>/var/cache/apt/archives<span class="w"> </span>目录下的<span class="w"> </span>.deb<span class="w"> </span>文件
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>aptitude
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">    </span>安装：sudo<span class="w"> </span>aptitude<span class="w"> </span>install<span class="w"> </span>tree
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">    </span>重新安装：sudo<span class="w"> </span>aptitude<span class="w"> </span>reinstall<span class="w"> </span>tree
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">    </span>更新：sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="w">    </span>移除：sudo<span class="w"> </span>aptitude<span class="w"> </span>remove<span class="w"> </span>tree
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="w">    </span>显示状态：sudo<span class="w"> </span>aptitude<span class="w"> </span>show<span class="w"> </span>tree
+</code></pre></div>
+<p><strong>查找apt源有哪些安装包</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>apt-cache<span class="w"> </span>search<span class="w"> </span>maven
+</code></pre></div>
+<h3 id="deb">deb包安装<a class="headerlink" href="#deb" title="Permanent link">&para;</a></h3>
+<p>安装
+    sudo dpkg -i xxx.deb
+删除
+    sudo dpkg -r xxx</p>
+<h3 id="_35">源码安装<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<ol>
+<li>解压缩源代码包</li>
+<li>进入到安装目录：cd dir</li>
+<li>检测文件是否缺失，创建Makefile，检测编译环境： ./configure</li>
+<li>编译源码，生成库和可执行程序：make</li>
+<li>把库和可执行程序，安装到系统目录下：sudo make install</li>
+<li>删除和卸载软件：sudo make distclean</li>
+<li>上述安装步骤并不是绝对的，应该先查看附带的 README 文件</li>
+</ol>
+<h3 id="_36">常见问题<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<h4 id="linux">Linux安装到哪个目录<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h4>
+<h5 id="1">1、软件安装<a class="headerlink" href="#1" title="Permanent link">&para;</a></h5>
+<p>usr:系统级目录。可理解为C:Windows/，</p>
+<p>usr/lib:可理解为C:Windows/System32。</p>
+<p>usr/local:用户级的程序目录。可理解为C:/Progrem Files/。用户自己编译的软件默认安装到这里。</p>
+<p>/opt:用户级的程序目录，可理解为D:/Software,opt用于放置第三方大型软件，当不需要时，直接rm-f即可。当硬盘容量不够时，也可将opt单独挂载到其他磁盘上使用。</p>
+<h5 id="2">2、源码<a class="headerlink" href="#2" title="Permanent link">&para;</a></h5>
+<p>usr/src：系统级源码目录。</p>
+<p>usr/local/src：用户级源码目录。</p>
+<h5 id="3">3、常用目录及用途<a class="headerlink" href="#3" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>/bin:<span class="w"> </span>存放二进制可执行文件<span class="o">(</span>ls,cat,mkdir等<span class="o">)</span>，常用命令一般都在这里。
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>/etc:<span class="w"> </span>存放系统管理和配置文件
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>/home:<span class="w"> </span>存放所有用户文件的根目录，是用户主目录的基点，比如用户user的主目录就是home/user,可以用~user表示
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>/usr:<span class="w"> </span>用于存放系统应用程序，比较重要的目录us小ocl本地系统管理员软件安装目录（安装系统级的应用）。这是最庞大的目录，要用到的应用程序和文件几乎都在这个目录。
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>/usr/x11r6:<span class="w"> </span>存放x<span class="w"> </span>window的目录
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>/usr/bin:<span class="w"> </span>众多的应用程序
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>/usr/sbin:<span class="w"> </span>超级用户的一些管理程序
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>/usr/doc:<span class="w"> </span>linux文档
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>/usr/include:<span class="w"> </span>linux下开发和编译应用程序所需要的头文件
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>/usr/lib:<span class="w"> </span>常用的动态链接库和软件包的配置文件
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>/usr/man:<span class="w"> </span>帮助文档
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>/usr/src:<span class="w"> </span>源代码，linux内核的源代码就放在/usr/src/linux里
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>/usr/local/bin:<span class="w"> </span>本地增加的命令
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>/usr/local/Iib:<span class="w"> </span>本地增加的库
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>/opt:<span class="w"> </span>额外安装的可选应用程序包所放置的位置。一般情况下，我们可以把omcat等都安装到这里。
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a>/proc:<span class="w"> </span>虚拟文件系统目录，是系统内存的映射。可直接访问这个目录来获取系统信息。
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a>/root:<span class="w"> </span>超级用户（系统管理员）的主目录（特权阶级）
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a>/sbin:<span class="w"> </span>存放二进制可执行文件，只有root才能访问。这里存放的是系统管理员使用的系统级别的管理命令和程序。如lifconfig等。
+<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a>/dev:<span class="w"> </span>用于存放设备文件。
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a>/mmt:<span class="w"> </span>系统管理员安装临时文件系统的安装点，系统提供这个目录是让用户临时挂载其他的文件系统。
+<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a>/boot:<span class="w"> </span>存放用于系统引导时使用的各种文件
+<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a>/lib:<span class="w"> </span>存放跟文件系统中的程序运行所需要的共享库及内核模块。共享库又叫动态链接共享库，作用类似windows.里的.dl文件，存放了根文件
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a>系统程序运行所需的共享文件。
+<a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a>/tmp:<span class="w"> </span>用于存放各种临时文件，是公用的临时文件存储点。
+<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a>/var:<span class="w"> </span>用于存放运行时需要改变数据的文件，也是某些大文件的溢出区，比方说各种服务的日志文件（系统启动日志等。）等。
+</code></pre></div>
+<h4 id="ubuntumatlab">Ubuntu安装matlab遇到的问题<a class="headerlink" href="#ubuntumatlab" title="Permanent link">&para;</a></h4>
+<h5 id="matlabusrlocalmatlabr2021b">安装Matlab时无/usr/local/MATLAB/R2021b文件夹的写入权限的解决方案<a class="headerlink" href="#matlabusrlocalmatlabr2021b" title="Permanent link">&para;</a></h5>
+<p>授予用户对该文件夹以及所有子文件夹和目录的所有权，从而可以以该用户进行读取和写入。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>username<span class="w"> </span>filedir/file
+</code></pre></div>
+<p><img alt="s1685869017381" src="../assets/1685869017381.png" /></p>
+<p>如果还不行，可以使用chmod命令来修复权限</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>u+rwx<span class="w"> </span>-R<span class="w"> </span>filedir/file
+</code></pre></div>
+<p>（安装完软件后，要把文件夹所属用户改为root，这样所有用户才可以一起使用）</p>
+<h5 id="_37">添加环境变量<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h5>
+<h6 id="a">a、仅针对当前用户<a class="headerlink" href="#a" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>vi<span class="w"> </span>/home/lsl/.bashrc
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>eport<span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/share/software/matlab/bin:
+</code></pre></div>
+<p><img alt="s1685869053257" src="../assets/1685869053257.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>wq
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="nb">source</span><span class="w"> </span>/home/lsl/.bashrc
+</code></pre></div>
+<h6 id="b">b、针对系统所有用户<a class="headerlink" href="#b" title="Permanent link">&para;</a></h6>
+<p>1）在/etc/profile.d文件夹中vi matlab.sh文件，然后export，source /etc/profile</p>
+<p>2）在/etc/bash.bashrc文件中export，然后source /etc/bash.bashrc</p>
+<p>3）在/etc/profile文件中export，然后source /etc/profile</p>
+<h4 id="ubuntuanaconda">Ubuntu安装anaconda<a class="headerlink" href="#ubuntuanaconda" title="Permanent link">&para;</a></h4>
+<p><strong>1）安装教程</strong></p>
+<p><a href="https://blog.csdn.net/thy0000/article/details/122878599?ops_request_misc=%7B%22request%5Fid%22%3A%22165828824316782391869373%22%2C%22scm%22%3A%2220140713.130102334..%22%7D&amp;request_id=165828824316782391869373&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-122878599-null-null.142^v32^pc_search_result_control_group,185^v2^control&amp;utm_term=ubuntu anaconda&amp;spm=1018.2226.3001.4187">(23条消息) Ubuntu安装Anaconda详细步骤（Ubuntu21.10，Anaconda3）_萝北村的枫子的博客-CSDN博客_ubuntu安装anaconda</a></p>
+<p><strong>2）更改环境变量</strong></p>
+<h5 id="a_1">a、<a class="headerlink" href="#a_1" title="Permanent link">&para;</a></h5>
+<p>方法一：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>$ vi ~/.bashrc
+</code></pre></div>
+<p>在最后一行添加<code>PATH=$PATH:/my_new_path:</code></p>
+<p><code>$source ~/.bashrc</code></p>
+<p>仅当前用户可用</p>
+<p>方法二：注意：修改环境变量PATH。具体：修改<code>/etc/bash.bashrc</code>文件（所有用户都可用）</p>
+<p><code>$sudo vim /etc/bash.bashrc</code></p>
+<p>在文件末尾添加：</p>
+<p><code>export PATH=$PATH:/my_new_path:</code></p>
+<p>修改PATH后，关掉终端，重新打开终端（或重启）</p>
+<p>改完之后要source激活一下</p>
+<h5 id="b_1">b、<a class="headerlink" href="#b_1" title="Permanent link">&para;</a></h5>
+<p>Ubuntu安装anaconda3后找不到conda命令的原因是没有把anaconda3添加到路径，类似于Windows中添加到环境变量，所以找不到命令。解决方法是在终端中运行一下命令：</p>
+<p><code>echo 'export PATH="/home/你的用户名/anaconda3/bin:$PATH"' &gt;&gt; ~/.bashrc</code></p>
+<p>（可以把这个添加到<code>/etc/bash.bashrc</code>，这样所有用户都可以用）</p>
+<p>添加完source激活一下</p>
+<h5 id="c">c、最好的方法<a class="headerlink" href="#c" title="Permanent link">&para;</a></h5>
+<p>在<code>/etc/profile.d/</code>通过vi建立anaconda.sh文件</p>
+<p>编辑输入：</p>
+<p><code>export PATH=$PATH:/usr/local/Software/Anaconda/bin:</code></p>
+<p>然后激活profile：</p>
+<p><code>source /etc/profile</code></p>
+<h4 id="3base">3）一进终端就进入base环境<a class="headerlink" href="#3base" title="Permanent link">&para;</a></h4>
+<p>通过以下方式设置取消自动激活</p>
+<p><code>conda config --set auto_activate_base false</code></p>
+<p>然后重开终端</p>
+<p>其配置文件位于~用户目录下的<code>.condarc</code></p>
+<p>如果反悔了还想要base一直留着的话可以使用以下语句来恢复</p>
+<p><code>conda config --set auto_activate_base true</code></p>
+<p>4）python和matlab联调</p>
+<p>需要找到<code>matlab/engines/python/setup.py</code></p>
+<p>1、激活环境</p>
+<p>2、sudo ……指定环境下/python setup.py</p>
+<p>（不然sudo python就是默认的python2.7）</p>
+<h4 id="ubuntufastgithub">Ubuntu安装fastgithub<a class="headerlink" href="#ubuntufastgithub" title="Permanent link">&para;</a></h4>
+<p>1、运行已编译好的可执行 fastgithub</p>
+<p>$ ./fastgithub   （可加nohup，不挂起）</p>
+<p>2、设置系统自动代理为</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>http://127:0:0:1:38457
+</code></pre></div>
+<p><img alt="s1685869411414" src="../assets/1685869411414.png" /></p>
+<p>3、firefox浏览器导入证书</p>
+<p><img alt="s1685869417688" src="../assets/1685869417688.png" /></p>
+<p>这样浏览器就可以登录<a href="http://www.github.com">www.github.com</a></p>
+<h5 id="_38">遇到问题：<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h5>
+<p>1、git时</p>
+<p>fatal: 无法访问 'https://github.com/smileatl/MIT6.S081-xv6-labs-2020.git/'：Failed to connect to github.com port 443: 拒绝连接</p>
+<p>如果你开启了VPN，很可能是因为代理的问题，这时候设置一下http.proxy就可以了。（我只要设置http.proxy就可以了，）</p>
+<p>一定要查看自己的VPN端口号，假如你的端口号是7890，在git bash命令行中输入以下命令即可：</p>
+<p>git config --global http.proxy 127.0.0.1:38457</p>
+<p>git config --global https.proxy 127.0.0.1:38457</p>
+<p>如果你之前git中已经设置过上述配置，则使用如下命令取消再进行配置即可：</p>
+<p>git config --global --unset http.proxy</p>
+<p>git config --global --unset https.proxy</p>
+<p>下面是几个常用的git配置查看命令：</p>
+<p>git config --global http.proxy #查看git的http代理配置</p>
+<p>git config --global https.proxy #查看git的https代理配置</p>
+<p>git config --global -l #查看git的所有配置</p>
+<h2 id="_39">其他<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h2>
+<h3 id="man">查看man手册<a class="headerlink" href="#man" title="Permanent link">&para;</a></h3>
+<p><strong>man man -&gt; 共九个章节</strong></p>
+<ol>
+<li>​    <mark>可执行程序或shell命令</mark></li>
+<li>​    <mark>系统调用（内核提供的函数）</mark></li>
+<li>​    <mark>库调用（程序库中提供的函数）</mark></li>
+<li>​    特殊文件（通常位于/dev）</li>
+<li>​    <mark>文件格式和规范（如：/etc/passwd）</mark></li>
+<li>​    游戏</li>
+<li>​    杂项</li>
+<li>​    系统管理命令</li>
+<li>​    内核例程</li>
+</ol>
+<h3 id="_40">环境变量分类<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
+<p>环境变量可以简单的分成用户自定义的环境变量以及系统级别的换变量</p>
+<p>用户级别环境变量定义文件：<code>~/.bashrc、~/.profile</code>（部分系统为：<code>~/.bash_profile</code></p>
+<p>系统级别环境变量定义文件：<code>/etc/bashrc、/etc/profiile</code>（部分系统为：<code>/etc/bash_profile</code>、<code>/etc/environment</code>）</p>
+<p>另外在用户环境变量中，系统会首先读取<code>~/.bash_profile</code>（或者<code>~/.profile</code>）文件，如果没有该文件则读取<code>~/.bash_login</code>，根据这些文件中内容再去读取<code>~/.bashrc</code></p>
+<h3 id="_41">系统配置检查<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h3>
+<h4 id="cpu">查看cpu核数<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
+<h5 id="1cpu">1、物理cpu的个数<a class="headerlink" href="#1cpu" title="Permanent link">&para;</a></h5>
+<p>物理核心就是计算机上实际配置的CPU个数。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># wc -l 是统计行数</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>cat<span class="w"> </span>/proc/cpuinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;physical id&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+<h5 id="2cpu">2、每个CPU的核数<a class="headerlink" href="#2cpu" title="Permanent link">&para;</a></h5>
+<p>指CPU上集成的处理数据的CPU核心个数，单核指CPU核心数一个，双核则指的是两个。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># uniq 可以去重连续出现的相同记录</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>cat<span class="w"> </span>/proc/cpuinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;cpu cores&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq
+</code></pre></div>
+<h5 id="3_1">3、逻辑处理器数量<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h5>
+<p>操作系统可以使用逻辑 CPU 来模拟出真实 CPU 的效果。</p>
+<p>在之前没有多核处理器的时候，一个 CPU 只有一个核，而现在有了多核技术，其效果就好像把多个 CPU 集中在一个 CPU 上。</p>
+<p>当计算机没有开启超线程时，逻辑 CPU 的个数就是计算机的核数。而当超线程开启后，逻辑 CPU 的个数是核数的两倍。实际上逻辑 CPU的数量就是平时称呼的几核几线程中的线程数量。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># sort -u = sort | uniq 先排序，后去重</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>cat<span class="w"> </span>/proc/cpuinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;processor&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+<h5 id="4arch">4、arch<a class="headerlink" href="#4arch" title="Permanent link">&para;</a></h5>
+<p>查看linux的内核版本</p>
+<p>arm64是ARM中64位体系架构，属于精简指令集体系，汇编指令比较简单</p>
+<p>x64是x86系列中的64位体系，属于复杂指令集体系，汇编指令较多。</p>
+<p>属于两种不同的体系</p>
+<h5 id="5">5、小结<a class="headerlink" href="#5" title="Permanent link">&para;</a></h5>
+<p>CPU 总核数 = 物理 CPU 个数 X 每颗物理 CPU 的核数</p>
+<p>CPU 逻辑数 = 物理 CPU 个数 X 每颗物理 CPU 的核数 X 超线程数</p>
+<h4 id="_42">查看显卡型号、显卡信息、<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
+<h5 id="_43">一、查看显卡型号<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h5>
+<p>1、查看显卡型号命令</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>lspci<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>vga
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="c1">#----output------</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="m">01</span>:00.0<span class="w"> </span>VGA<span class="w"> </span>compatible<span class="w"> </span>controller:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>Device<span class="w"> </span>1f06<span class="w"> </span><span class="o">(</span>rev<span class="w"> </span>a
+</code></pre></div>
+<p>可以看到，查看到的显卡型号名称是一个十六进制数字代码。
+ 接下来将得到的十六进制数字代码，带入网址中查询具体显卡型号。</p>
+<p>2、以下网址输入数字代码查询显卡型号</p>
+<p><a href="http://pci-ids.ucw.cz/mods/PC/10de?action=help?help=pci">PCI devices (ucw.cz)</a></p>
+<p><img alt="s1685868711346" src="../assets/1685868711346.png" /></p>
+<p><img alt="s1685868737538" src="../assets/1685868737538.png" /></p>
+<h5 id="_44">二、查看显卡信息<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h5>
+<p>1、查看显卡信息命令</p>
+<ol>
+<li>nvidia-smi</li>
+<li>nvidia-smi（显示一次当前GPU占用情况）</li>
+<li>nvidia-smi -l（每秒刷新一次并显示）</li>
+<li>watch -n 5 nvidia-smi （其中，5表示每隔6秒刷新一次终端的显示结果）</li>
+</ol>
+<p><img alt="s1685868785609" src="../assets/1685868785609.png" /></p>
+<p>2、显卡信息详解</p>
+<ol>
+<li>第一栏的Fan：N/A是风扇转速，从0到100%之间变动，这个速度是计算机期望的风扇转速，实际情况下如果风扇堵转，可能打不到显示的转速。有的设备不会返回转速，因为它不依赖风扇冷却而是通过其他外设保持低温（比如我们实验室的服务器是常年放在空调房间里的）。</li>
+<li>第二栏的Temp：是温度，单位摄氏度。</li>
+<li>第三栏的Perf：是性能状态，从P0到P12，P0表示最大性能，P12表示状态最小性能。</li>
+<li>第四栏下方的Pwr：是能耗，上方的Persistence-M：是持续模式的状态，持续模式虽然耗能大，但是在新的GPU应用启动时，花费的时间更少，这里显示的是off的状态。</li>
+<li>第五栏的Bus-Id是涉及GPU总线的东西</li>
+<li>第六栏的Disp.A是Display Active，表示GPU的显示是否初始化。</li>
+<li>第五第六栏下方的Memory Usage是显存使用率。</li>
+<li>第七栏是浮动的GPU利用率。</li>
+<li>第八栏上方是关于ECC的东西。</li>
+<li>第八栏下方Compute M是计算模式。</li>
+<li>下面一张表示每个进程占用的显存使用率。</li>
+</ol>
+<p>注: 显存占用和GPU占用是两个不一样的东西，显卡是由GPU和显存等组成的，显存和GPU的关系有点类似于内存和CPU的关系。 </p>
+<h4 id="uname-a">uname -a<a class="headerlink" href="#uname-a" title="Permanent link">&para;</a></h4>
+<p>看内核版本和发行版本</p>
+<p><img alt="s1706713606167" src="../assets/1706713606167.png" /></p>
+<h4 id="arch">arch<a class="headerlink" href="#arch" title="Permanent link">&para;</a></h4>
+<p>查看操作系统架构类型：</p>
+<p>arm64是ARM中64位体系架构，属于精简指令集体系，汇编指令比较简单</p>
+<p>x64是x86系列中的64位体系，属于复杂指令集体系，汇编指令较多。</p>
+<p>属于两种不同的体系</p>
+<h4 id="dpkg-print-architecture">dpkg --print-architecture<a class="headerlink" href="#dpkg-print-architecture" title="Permanent link">&para;</a></h4>
+<p>正在运行的处理器架构</p>
+<p>arm64，arm的</p>
+<p>amd64就是x86-64，intel和amd的</p>
+<h3 id="_45">其他命令<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h3>
+<p><img alt="s1683859490354" src="../assets/1683859490354.png" /></p>
+<h4 id="echo">echo<a class="headerlink" href="#echo" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>在显示器上显示数据
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="w">    </span>普通数据：echo<span class="w"> </span>字符串
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">    </span>显示环境变量：echo<span class="w"> </span><span class="nv">$PATH</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="w">    </span>显示上一次程序退出值：echo<span class="w"> </span><span class="nv">$?</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="w">    </span>$<span class="w"> </span>:<span class="w"> </span>取值
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="w">    </span>？：最近一次程序退出时的返回值
+</code></pre></div>
+<h4 id="_46">终端翻页<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
+<p>Shift + PageUp -&gt; 上翻页
+Shift + PageDown -&gt; 下翻页</p>
+<h4 id="_47">清屏<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
+<p>clear
+Ctrl + l</p>
+<h4 id="_48">创建终端<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
+<p>Ctrl + Alt + T （Ubuntu）
+Ctrl + Shift +T （添加新标签页）</p>
+<h4 id="_49">设置或查看别名<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>查看
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">    </span><span class="nb">alias</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>设置
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">pag</span><span class="o">=</span><span class="s1">&#39;ps aux | grep&#39;</span>
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="w">        </span>需要长久有效需要去设置配置文件：.bashrc
+</code></pre></div>
+<h4 id="_50">关键重启<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>poweroff
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>reboot
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>shutdown
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="w">    </span>参数
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="w">        </span>-t<span class="w"> </span>秒数<span class="w"> </span>:<span class="w"> </span>设定在切换至不同的runlevel之前,<span class="w"> </span>警告和删除二讯号之间的延迟时间<span class="o">(</span>秒<span class="o">)</span>.
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="w">        </span>-k<span class="w"> </span>:<span class="w"> </span>仅送出警告讯息文字,<span class="w"> </span>但不是真的要<span class="w"> </span>shutdown.
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="w">        </span>-r<span class="w"> </span>:<span class="w"> </span>shutdown<span class="w"> </span>之後重新开机.
+<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a><span class="w">        </span>-h<span class="w"> </span>:<span class="w"> </span>shutdown<span class="w"> </span>之後关机.
+<a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a><span class="w">        </span>-n<span class="w"> </span>:<span class="w"> </span>不经过<span class="w"> </span>init<span class="w"> </span>,<span class="w"> </span>由<span class="w"> </span>shutdown<span class="w"> </span>指令本身来做关机动作.<span class="o">(</span>不建议你用<span class="o">)</span>
+<a id="__codelineno-40-10" name="__codelineno-40-10" href="#__codelineno-40-10"></a><span class="w">        </span>-f<span class="w"> </span>:<span class="w"> </span>重新开机时,<span class="w"> </span>跳过<span class="w"> </span>fsck<span class="w"> </span>指令,<span class="w"> </span>不检查档案系统.
+<a id="__codelineno-40-11" name="__codelineno-40-11" href="#__codelineno-40-11"></a><span class="w">        </span>-F<span class="w"> </span>:<span class="w"> </span>重新开机时,<span class="w"> </span>强迫做<span class="w"> </span>fsck<span class="w"> </span>检查.
+<a id="__codelineno-40-12" name="__codelineno-40-12" href="#__codelineno-40-12"></a><span class="w">        </span>-c<span class="w"> </span>:<span class="w"> </span>将已经正在<span class="w"> </span>shutdown<span class="w"> </span>的动作取消.
+<a id="__codelineno-40-13" name="__codelineno-40-13" href="#__codelineno-40-13"></a><span class="w">    </span>例子:
+<a id="__codelineno-40-14" name="__codelineno-40-14" href="#__codelineno-40-14"></a><span class="w">        </span>shutdown<span class="w"> </span>-r<span class="w"> </span>now<span class="w"> </span>立刻重新开机
+<a id="__codelineno-40-15" name="__codelineno-40-15" href="#__codelineno-40-15"></a><span class="w">        </span>shutdown<span class="w"> </span>-h<span class="w"> </span>now<span class="w"> </span>立刻关机
+<a id="__codelineno-40-16" name="__codelineno-40-16" href="#__codelineno-40-16"></a><span class="w">        </span>shutdown<span class="w"> </span>-k<span class="w"> </span>now<span class="w"> </span><span class="s1">&#39;Hey! Go away! now....&#39;</span><span class="w"> </span>发出警告讯息,<span class="w"> </span>但没有真的关机
+<a id="__codelineno-40-17" name="__codelineno-40-17" href="#__codelineno-40-17"></a><span class="w">        </span>shutdown<span class="w"> </span>-t3<span class="w"> </span>-r<span class="w"> </span>now<span class="w"> </span>立刻重新开机,<span class="w"> </span>但在警告和删除processes<span class="w"> </span>之间,<span class="w"> </span>延迟3秒钟.
+<a id="__codelineno-40-18" name="__codelineno-40-18" href="#__codelineno-40-18"></a><span class="w">        </span>shutdown<span class="w"> </span>-h<span class="w"> </span><span class="m">10</span>:42<span class="w"> </span><span class="s1">&#39;Hey! Go away!&#39;</span><span class="w"> </span><span class="m">10</span>:42<span class="w"> </span>分关机
+<a id="__codelineno-40-19" name="__codelineno-40-19" href="#__codelineno-40-19"></a><span class="w">        </span>shutdown<span class="w"> </span>-r<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="s1">&#39;Hey! Go away!&#39;</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>分钟後关机
+<a id="__codelineno-40-20" name="__codelineno-40-20" href="#__codelineno-40-20"></a><span class="w">        </span>shutdown<span class="w"> </span>-c<span class="w"> </span>将刚才下的<span class="w"> </span>shutdown<span class="w"> </span>指令取消,必须切换至其它tty,<span class="w"> </span>登入之後,<span class="w"> </span>才能下此一指令.
+<a id="__codelineno-40-21" name="__codelineno-40-21" href="#__codelineno-40-21"></a><span class="w">        </span>shutdown<span class="w"> </span>now<span class="w"> </span>切换至单人操作模式<span class="o">(</span>不加任何选项时<span class="o">)</span>
+</code></pre></div>
+<h2 id="_51">其他问题<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h2>
+<h3 id="ubuntu_1">远程连接软件连接不上ubuntu<a class="headerlink" href="#ubuntu_1" title="Permanent link">&para;</a></h3>
+<p>需要保证当前系统支持ssh远程连接服务</p>
+<p>1、在ubuntu系统中安装ssh服务</p>
+<p>执行命令：sudo apt-get install openssh-server</p>
+<p>2、然后执行ps -e | grep ssh确认ssh-server是否启动</p>
+<p>如果只有ssh-agent的话 那么说明ssh-server还未启动</p>
+<p><img alt="s1685871213014" src="../assets/1685871213014.png" /></p>
+<p>3、重启ssh服务 ssh-server配置文件位于/ etc/ssh/sshd_config</p>
+<p>执行命令：sudo /etc/init.d/ssh restart</p>
+<p>重新启动ssh服务</p>
+<h3 id="u">U盘只读文件系统<a class="headerlink" href="#u" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>lsblk/df<span class="w"> </span>h：查看分区
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>sudo<span class="w"> </span>umount<span class="w"> </span>/media/linhuihuang/XIAKE<span class="w"> </span>:<span class="w"> </span>卸载U盘
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>sudo<span class="w"> </span>dosfsck<span class="w"> </span>-v<span class="w"> </span>-a<span class="w"> </span>/dev/sdb1<span class="w"> </span>:<span class="w"> </span>修复U盘文件系统故障
+<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a><span class="c1"># 或者用win10修理磁盘</span>
+</code></pre></div>
+<p>U盘拔了再插</p>
+<p>有时需要注销用户，重开</p>
+<h3 id="linuxsuperwindowswin">linux的super键就是windows的win键。<a class="headerlink" href="#linuxsuperwindowswin" title="Permanent link">&para;</a></h3>
+<h3 id="filenamesh">./filename.sh文件 你没有足够权限<a class="headerlink" href="#filenamesh" title="Permanent link">&para;</a></h3>
+<p>1）chmod +x xxxx.sh</p>
+<p>加上可执行权限</p>
+<p>2）bash filename.sh</p>
+<p>直接用bash解析器解析</p>
+<h3 id="apt-get-apt">apt-get和 apt<a class="headerlink" href="#apt-get-apt" title="Permanent link">&para;</a></h3>
+<p>apt-get是老版的命令，apt是新版的命令，apt还包含了apt-get cache等等，用起来更方便。因为apt刚刚出来，所以允许有apt-get和apt共存，以后apt-get就要淘汰了。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../../YML/yml/" class="md-footer__link md-footer__link--prev" aria-label="上一页: YML">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                YML
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B/Linux%E7%B3%BB%E7%BB%9F%E5%87%BD%E6%95%B0/" class="md-footer__link md-footer__link--next" aria-label="下一页: Linux基础编程">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Linux基础编程
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 - 2024 smileatl
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/smileatl" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<songlei.lin@qq.com>" target="_blank" rel="noopener" title="TEmail" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M64 112c-8.8 0-16 7.2-16 16v22.1l172.5 141.6c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16zM48 212.2V384c0 8.8 7.2 16 16 16h384c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0zM0 128c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v256c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://space.bilibili.com/343556699?spm_id_from=333.999.0.0" target="_blank" rel="noopener" title="Bilibili" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0q13.2 0 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0q13.2 0 21.9 8.603c5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1m-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8s9.7-14.3 10.1-23.5zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5s-17.5-3.2-23.6-9.5-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2s13.2-9.6 23.3-10c9.2.4 17 3.7 23.3 10m191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2s-14 9.5-23.6 9.5-17.4-3.2-23.6-9.5c-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2s14.1-9.6 23.3-10c9.2.4 17 3.7 23.3 10"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.douban.com/people/172023060/" target="_blank" rel="noopener" title="Douban" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.51 3.06h22.98V.755H.51zm20.976 2.537v9.608h-2.137l-1.669 5.76H24v2.28H0v-2.28h6.32l-1.67-5.76H2.515V5.597h18.972Zm-5.066 9.608H7.58l1.67 5.76h5.501zM18.367 7.9H5.634v5.025h12.733z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "navigation.tabs", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+      
+    
+  </body>
+</html>
