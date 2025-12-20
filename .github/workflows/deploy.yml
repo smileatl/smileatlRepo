@@ -1,4 +1,4 @@
-name: ci 
+name: Repository deploy
 on:
   push:
     branches:
