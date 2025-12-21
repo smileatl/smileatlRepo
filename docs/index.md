@@ -87,7 +87,6 @@ template: home.html
       </font>
     </body>
   </div>
-
 <!-- <p align="center">
 
   <a href="site_introduction/">
@@ -120,7 +119,8 @@ template: home.html
 
 <div style="padding:2vh 0 5vh 0;text-align:center">
   <img src="https://ghchart.rshah.org/smileatl" alt="smileatl's Contribution activity" width=100% style="position:relative">
-  <div style="margin-top:10px;font-size:13px;font-weight:bold">smileatl's Contribution activity</div>
+  <div style="margin-top:10px;font-size:14px">smileatl's Contribution activity</div>
 </div>
+
 
 
