@@ -17,7 +17,6 @@ template: home.html
 
 <!-- margin-left偏移一点位置 -->
 <!-- <h1 style="text-align:center; margin-left: 55px; color:#518FC1; font-size:2em;" class="ml3">smileatl Repository</h1> -->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
 <p align="center">
@@ -87,6 +86,7 @@ template: home.html
       </font>
     </body>
   </div>
+
 <!-- <p align="center">
 
   <a href="site_introduction/">
@@ -106,6 +106,7 @@ template: home.html
       <span>关于网站</span>
   </a>
 </p>
+
 <!-- <p align="center">
   <a href="start_learning/" class="rounded-button blue-button">
       <span>开始学习</span>
